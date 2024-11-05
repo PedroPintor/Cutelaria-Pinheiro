@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/cutelaria-pinheiro")
-public class cutelariaController {
+public class CutelariaController {
 
 
     // pagina principal
@@ -32,7 +32,5 @@ public class cutelariaController {
     public String pag_tabuas(){
         return "/tabuas";
     }
-
     
-
 }

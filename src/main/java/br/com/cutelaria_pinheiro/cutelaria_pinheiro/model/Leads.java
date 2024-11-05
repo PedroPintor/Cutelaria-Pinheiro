@@ -20,7 +20,7 @@ public class Leads {
     @Basic
     @Column( name = "ID_LEAD")
     @GeneratedValue( strategy = GenerationType.AUTO)
-    private Id id_lead;
+    private UUID ID;
 
     @Column( name = "NOME", nullable = false, length = 20)
     private String nome;
@@ -30,8 +30,8 @@ public class Leads {
 
     // metodos
 
-    public Id get_id() {
-        return this.id_lead;
+    public UUID get_id() {
+        return this.ID;
     }
 
     public String get_nome() {
@@ -42,8 +42,8 @@ public class Leads {
         return this.whatsapp;
     }
 
-    public void set_idLeads( Id id) {
-        this.id_lead = id;
+    public void set_id(UUID id) {
+        this.ID = id;
     }
 
     public void set_nome( String nome) {
