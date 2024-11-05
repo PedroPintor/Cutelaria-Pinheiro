@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @Service
 public class LeadsService {
+
     @Autowired
     LeadsRepository leadsRepository;
 
@@ -21,6 +22,8 @@ public class LeadsService {
     public Optional<Leads> findByID(UUID id) {
         return leadsRepository.findByID(id);
     }
+
+    
 
 
 }
