@@ -25,9 +25,34 @@ public class Produto {
     private String nome;
 
     @Column( name = "CATEGORIA")
-    private int categoria;
+    private String categoria;
 
+    
     // metodos
     
+    public UUID getID() {
+        return ID;
+    }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setID(UUID iD) {
+        ID = iD;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+    
+    
 }

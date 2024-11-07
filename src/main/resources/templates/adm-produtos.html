@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <tbody>
+        <a href="/arquivos/inserir" class="btn btn-warning btn-sm">Adicionar</a>
+        <tr th:each="produtos : ${produos}">
+            <td th:text="${produtos.ID}"></td>
+            <td th:text="${produtos.nome}"></td>
+            <td th:text="${produtos.categoria}"></td>
+            <td>
+                <a th:href="@{/{id}(id=${produtos.ID})}" class="btn btn-warning btn-sm">Editar</a>
+            </td>
+            <td>
+                <a th:href="@{/{id}(id=${produtos.ID})}" class="btn btn-danger btn-sm">Remover</a>
+            </td>
+        </tr>
+    </tbody>
+
+</body>
+
+</html>

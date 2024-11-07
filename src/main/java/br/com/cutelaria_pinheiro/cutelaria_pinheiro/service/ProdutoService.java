@@ -1,6 +1,7 @@
 package br.com.cutelaria_pinheiro.cutelaria_pinheiro.service;
 
-import java.util.Optional;
+import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,12 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    // public Optional<Produto> findByProduto( Produto produto){
-        
-    // }
+    public List<Produto> findAll() {
+        return produtoRepository.findAll();
+    }
+    
+    public Produto salvar(Produto model){
+        return produtoRepository.save(model);
+    }
 
 }

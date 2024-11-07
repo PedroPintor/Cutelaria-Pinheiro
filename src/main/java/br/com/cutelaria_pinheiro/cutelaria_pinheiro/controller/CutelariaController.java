@@ -10,7 +10,7 @@ public class CutelariaController {
 
 
     // pagina principal
-    @GetMapping(" ")
+    @GetMapping("")
     public String index(){
         return "/index";
     }
@@ -32,5 +32,5 @@ public class CutelariaController {
     public String pag_tabuas(){
         return "/tabuas";
     }
-    
+     
 }

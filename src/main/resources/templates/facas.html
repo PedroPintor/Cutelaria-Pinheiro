@@ -1,15 +1,103 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html lang="br">
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalização de Facas</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .header {
+            background-color: #d3d3d3;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+        }
+        .instructions {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            background-color: #e6e6e6;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .steps, .personalize-button {
+            flex: 1;
+            text-align: center;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .gallery-item {
+            width: 200px;
+            height: 200px;
+            background-color: #d3d3d3;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        .highlighted {
+            border-color: blue;
+        }
+        .personalize-button button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #d3d3d3;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .personalize-button button:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">Header</div>
+
+    <div class="container">
+        <div class="instructions">
+            <div class="steps">
+                <p>explicando como se personaliza em 3 passos</p>
+            </div>
+            <div class="steps">
+                <ol>
+                    <li>selecione o cabo</li>
+                    <li>seleciona a lâmina</li>
+                    <li>observações finais</li>
+                </ol>
+            </div>
+            <div class="personalize-button">
+                <button>Personalizar</button>
+            </div>
+        </div>
+
+        <div class="gallery">
+            <div class="gallery-item"></div>
+            <div class="gallery-item highlighted"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+        </div>
+    </div>
+
+</body>
 </html>
