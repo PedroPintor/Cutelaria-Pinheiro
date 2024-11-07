@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
         <button type="submit">Upload</button>
     </form>
     
-    <h2>Download de Arquivo</h2>
+    <!-- <h2>Download de Arquivo</h2>
     <form id="downloadForm">
         <label for="fileId">ID do Arquivo:</label>
         <input type="number" id="fileId" name="fileId" required>
@@ -26,18 +26,18 @@
         <label for="nome">Nome</label>
         <input type="text" class="form-control" id="nome" th:field="*{nome}" placeholder="Nome" maxlength="20"
         required>
-    </div>
+    </div> -->
 
-    <form action="#" th:action="@{/produtos/adm-salvar}" th:object="${produto}" method="post">
+    <form action="#" th:action="@{/administrador/produtos/salvar}" th:object="${produto}" method="post">
         <div class="form-group">
             <label for="categoria">Categoria</label>
             <input type="text" class="form-control" id="categoria" th:field="*{categoria}" placeholder="Categoria"
                 step="0.01" required>
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>
-        <a href="#" th:href="@{/produtos/adm-listar}" class="btn btn-secondary">Cancelar</a>
+        <a href="#" th:href="@{/administrador/produtos/listar}" class="btn btn-secondary">Cancelar</a>
     </form>
-
+<!-- 
     <script>
         function downloadFile() {
             const fileId = document.getElementById("fileId").value;
@@ -47,7 +47,7 @@
                 alert("Por favor, insira um ID de arquivo válido.");
             }
         }
-    </script>
+    </script> -->
 </body>
 
 </html>

@@ -19,7 +19,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.model.File;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.FileService;
 
-
 @Controller
 @RequestMapping("/arquivos")
 public class FileController {
@@ -27,9 +26,10 @@ public class FileController {
     @Autowired
     private FileService fileService;
 
-    // inserir Foto do Produto
-    @GetMapping("/inserir")
+    // inserir Foto do Produtod
+    @GetMapping("/adicionar")
     public String inserir() {
+
         return "/inserirProduto";
     }
 
@@ -48,11 +48,11 @@ public class FileController {
     // Método para download do arquivo
     // @GetMapping("/download/{id}")
     // public ResponseEntity<byte[]> downloadFile(@PathVariable UUID id) {
-    // File fileEntity = fileService.getFile(id);
-    // if (fileEntity != null) {
-    // return ResponseEntity.ok()
-    // ->ERRO .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" +
-    // fileEntity.getName() + "\"")
+    //     File fileEntity = fileService.getFile(id);
+    //     if (fileEntity != null) { 
+    //         return ResponseEntity.ok()
+    //                         ->ERRO .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" +
+    //                 fileEntity.getName() + "\"")
     // .body(fileEntity.getData());
     // }
     // return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);

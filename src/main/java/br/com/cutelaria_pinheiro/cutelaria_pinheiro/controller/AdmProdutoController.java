@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,6 @@ public class AdmProdutoController {
     @Autowired
     private ProdutoService produtoService;
 
-    // FALTA CONFIGURAR O BANCO DE DADOS PARA PRODUTOS
 
     @GetMapping("/listar")
     public String listar(ModelMap model) {
@@ -28,12 +28,22 @@ public class AdmProdutoController {
                 .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
                 .collect(Collectors.toList());
         model.addAttribute("produtos", sortedProdutos);
-        return "/adm-produtos";
+        return "adm-produtos";
     }
 
     @PostMapping("/salvar")
     public String salvar(Produto model) {
         produtoService.salvar(model);
-        return "/adm-produtos";
+        return "redirect:/administrador/produtos/listar";
     }
+
+     // inserir Foto do Produto
+     @GetMapping("/adicionar")
+     public String inserir(ModelMap model) {
+        model.addAttribute("produto", new Produto());
+        return "inserirProduto";
+     }
+
+
+ 
 }

@@ -10,7 +10,7 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 @Entity
-@Table( name = "bdd_arquivos", schema = "ARQUIVOS")
+//@Table( name = "bdd_arquivos", schema = "CUTELARIA")
 public class File {
     
     @Id

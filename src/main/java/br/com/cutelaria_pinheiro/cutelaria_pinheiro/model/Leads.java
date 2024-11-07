@@ -12,7 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "bdd_leads", schema = "LEADS")
+@Table(name = "bdd_leads", schema = "CUTELARIA")
 public class Leads {
     // ATRIBUTOS
 
