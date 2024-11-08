@@ -36,7 +36,7 @@
         <div class="container">
             <h1>Lista de Padrões</h1>
             <div class="d-flex justify-content-between mb-3">
-                <a th:href="@{/administrador/produtos/adicionar}" class="btn btn-primary">Inserir</a>
+                <a href="administrador/produtos/adicionar" class="btn btn-primary">Inserir</a>
                 <a href="#" th:href="@{/cutelaria-pinheiro}" class="btn btn-info">Principal</a>
             </div>
             <table class="table table-bordered">
@@ -54,10 +54,10 @@
                         <td th:text="${produto.nome}"></td>
                         <td th:text="${produto.categoria}"></td>
                         <td>
-                            <a th:href="@{/administrador/produtos/editar/{id}(id=${produto.id})}" class="btn btn-warning btn-sm">Editar</a>
+                            <a th:if="@{ produto.id != null}" th:href="@{/administrador/produtos/editar/{id}(id=${produto.id})}" class="btn btn-warning btn-sm">Editar</a>
                         </td>
                         <td>
-                            <a th:href="@{/administrador/produtos/remover/{id}(id=${produto.id})}" class="btn btn-danger btn-sm">Remover</a>
+                            <a th:if="@{ produto.id != null}" th:href="@{/administrador/produtos/remover/{id}(id=${produto.id})}" class="btn btn-danger btn-sm">Remover</a>
                         </td>
                     </tr>
                 </tbody>

@@ -19,7 +19,7 @@ public class Produto {
     @Basic
     @Column( name = "ID_PRODUTO")
     @GeneratedValue( strategy = GenerationType.AUTO)
-    private UUID ID;
+    private UUID id;
     
     @Column( name = "NOME")
     private String nome;
@@ -31,7 +31,7 @@ public class Produto {
     // metodos
     
     public UUID getID() {
-        return ID;
+        return id;
     }
 
     public String getNome() {
@@ -43,7 +43,7 @@ public class Produto {
     }
 
     public void setID(UUID iD) {
-        ID = iD;
+        this.id = iD;
     }
 
     public void setNome(String nome) {
