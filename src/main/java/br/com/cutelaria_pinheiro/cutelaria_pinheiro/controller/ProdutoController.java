@@ -14,27 +14,19 @@ import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.ProdutoService;
 @Controller
 @RequestMapping("/produtos")
 public class ProdutoController {
+    
     @Autowired
     private ProdutoService produtoService;
 
 
-    // visualizar produto faca -
-    @GetMapping("/informacoes")
-    public String informacoesFaca(Model model) {
-        // model.addAttribute("produto", new Produto() );
-        // produtoService.get_produto( model);
+    // visualizar informacao produto 
+    // @GetMapping("/informacoes/{id}")
+    // public String informacoesFaca(Model model) {
+    //     model.addAttribute("produto", produtoService.findById(id) ); // ainda tem q arrumar
 
-        return "/informacoes/faca";
-    }
+    //     return "redirect:/produto-informacao";
+    // }
 
-    // visualizar produto cutelo 
-    public String informacoesCutelo() {
-        return "/informacoes/cutelo";
-    }
 
-    // visualizar produto tabuas 
-    public String informacoesTabua() {
-        return "/informacoes/tabua";
-    }
 
 }

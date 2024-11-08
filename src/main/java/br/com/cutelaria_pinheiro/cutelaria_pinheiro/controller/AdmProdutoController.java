@@ -41,9 +41,7 @@ public class AdmProdutoController {
      @GetMapping("/adicionar")
      public String inserir(ModelMap model) {
         model.addAttribute("produto", new Produto());
-        return "inserirProduto";
+        return "/inserirProduto";
      }
 
-
- 
 }
