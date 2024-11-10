@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
-        <title>Lista de Padrões</title>
+        <title>Lista de Clientes</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <style>
             .container {
@@ -34,7 +34,7 @@
     </head>
     <body>
         <div class="container">
-            <h1>Lista de Padrões</h1>
+            <h1>Lista de Clientes</h1>
             <div class="d-flex justify-content-between mb-3">
                 <a th:href="@{/administrador/clientes/adicionar}" class="btn btn-primary">Inserir</a>
                 <a href="#" th:href="@{/cutelaria-pinheiro}" class="btn btn-info">Principal</a>
@@ -44,7 +44,9 @@
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
-                        <th>Categoria</th>
+                        <th>Data de Nascimento</th>
+                        <th>Email</th>
+                        <th>WhatsApp</th>
                         <th colspan="2">Ações</th>
                     </tr>
                 </thead>
@@ -52,12 +54,14 @@
                     <tr th:each="cliente : ${clientes}">
                         <td th:text="${cliente.id}"></td>
                         <td th:text="${cliente.nome}"></td>
-                        <td th:text="${cliente.categoria}"></td>
+                        <td th:text="${cliente.dataDeNascimento}"></td>
+                        <td th:text="${cliente.email}"></td>
+                        <td th:text="${cliente.whatsapp}"></td>
                         <td>
-                            <a th:if="@{ cliente.id != null}" th:href="@{/administrador/produtos/editar/{id}(id=${cliente.id})}" class="btn btn-warning btn-sm">Editar</a>
+                            <a th:if="${cliente.id != null}" th:href="@{/administrador/clientes/editar/{id}(id=${cliente.id})}" class="btn btn-warning btn-sm">Editar</a>
                         </td>
                         <td>
-                            <a th:if="@{ cliente.id != null}" th:href="@{/administrador/produtos/remover/{id}(id=${cliente.id})}" class="btn btn-danger btn-sm">Remover</a>
+                            <a th:if="${cliente.id != null}" th:href="@{/administrador/clientes/remover/{id}(id=${cliente.id})}" class="btn btn-danger btn-sm">Remover</a>
                         </td>
                     </tr>
                 </tbody>
