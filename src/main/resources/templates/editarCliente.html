@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Cliente</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 40px;
+        }
+        h1 {
+            font-size: 1.5rem;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Editar Cliente Cliente</h1>
+        <form th:action="@{/administrador/clientes/atualizar}" th:object="${cliente}" method="post">
+            <div th:if="${error}" class="alert alert-danger" role="alert">
+                <span th:text="${error}"></span>
+            </div>
+            <input type="hidden" name="id" th:value="${cliente.id}" />
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" th:field="*{nome}" placeholder="Nome do Cliente" >
+            </div>
+            <div class="form-group">
+                <label for="dataDeNascimento">Data de Nascimento</label>
+                <input type="date" class="form-control" id="dataDeNascimento" th:field="*{dataDeNascimento}" >
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Email" >
+            </div>
+            <div class="form-group">
+                <label for="whatsapp">WhatsApp</label>
+                <input type="text" class="form-control" id="whatsapp" th:field="*{whatsapp}" placeholder="WhatsApp" >
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+        <a href="#" th:href="@{/administrador/clientes/listar}" class="btn btn-secondary">Cancelar</a>
+    </div>
+</body>
+
+</html> 

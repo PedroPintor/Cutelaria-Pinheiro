@@ -33,7 +33,7 @@ public class Cliente {
     private String whatsapp;
 
     public UUID getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(UUID id) {

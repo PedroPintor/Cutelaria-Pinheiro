@@ -11,6 +11,7 @@
     <div class="container">
         <h1>Adicionar Produto</h1>
         <form th:action="@{/administrador/produtos/salvar}" th:object="${produto}" method="post" enctype="multipart/form-data">
+            
             <div class="form-group">
                 <label for="nome">Nome</label>
                 <input type="text" class="form-control" id="nome" th:field="*{nome}" placeholder="Nome do Produto" required>
