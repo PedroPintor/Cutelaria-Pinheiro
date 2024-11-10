@@ -18,8 +18,8 @@ public class ProdutoService {
         return produtoRepository.findAll();
     }
     
-    public Produto salvar(Produto model){
-        return produtoRepository.save(model);
+    public Produto salvar(Produto produto){
+        return produtoRepository.save(produto);
     }
 
     public Produto findById(UUID id){

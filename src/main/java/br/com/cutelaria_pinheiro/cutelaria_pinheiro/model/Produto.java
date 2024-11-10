@@ -29,12 +29,12 @@ public class Produto {
     private String categoria;
 
     @Lob
-    @Column()
+    @Column(name = "FOTO")
     private byte[] foto;
     
     // metodos
     
-    public UUID getID() {
+    public UUID getId() {
         return id;
     }
 
@@ -46,8 +46,8 @@ public class Produto {
         return categoria;
     }
 
-    public void setID(UUID iD) {
-        this.id = iD;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public void setNome(String nome) {
@@ -58,5 +58,12 @@ public class Produto {
         this.categoria = categoria;
     }
     
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
     
 }

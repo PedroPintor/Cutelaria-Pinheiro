@@ -1,15 +1,17 @@
 package br.com.cutelaria_pinheiro.cutelaria_pinheiro.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.model.Produto;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.ProdutoService;
@@ -19,7 +21,6 @@ import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.ProdutoService;
 public class AdmProdutoController {
     @Autowired
     private ProdutoService produtoService;
-
 
     @GetMapping("/listar")
     public String listar(ModelMap model) {
@@ -32,16 +33,28 @@ public class AdmProdutoController {
     }
 
     @PostMapping("/salvar")
-    public String salvar(Produto model) {
-        produtoService.salvar(model);
+    public String salvar(Produto model, @RequestParam("file") MultipartFile file, ModelMap modelMap) {
+        try {
+            if (file.getSize() > 2 * 1024 * 1024) { // 2 MB
+                modelMap.addAttribute("error", "O tamanho do arquivo não pode exceder 2 MB.");
+                return "/inserirProduto";
+            }
+            
+            if (!file.isEmpty()) {
+                model.setFoto(file.getBytes());
+            }
+            produtoService.salvar(model);
+        } catch (IOException e) {
+            e.printStackTrace();
+            modelMap.addAttribute("error", "Erro ao processar o arquivo.");
+            return "/inserirProduto";
+        }
         return "redirect:/administrador/produtos/listar";
     }
 
-     // inserir Foto do Produto
-     @GetMapping("/adicionar")
-     public String inserir(ModelMap model) {
+    @GetMapping("/adicionar")
+    public String inserir(ModelMap model) {
         model.addAttribute("produto", new Produto());
         return "/inserirProduto";
-     }
-
+    }
 }

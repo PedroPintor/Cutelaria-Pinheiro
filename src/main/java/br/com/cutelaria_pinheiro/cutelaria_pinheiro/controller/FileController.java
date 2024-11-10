@@ -1,6 +1,5 @@
 package br.com.cutelaria_pinheiro.cutelaria_pinheiro.controller;
 
-import java.net.http.HttpHeaders;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;

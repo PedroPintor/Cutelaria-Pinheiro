@@ -50,7 +50,7 @@
                 </thead>
                 <tbody>
                     <tr th:each="produto : ${produtos}">
-                        <td th:text="${produto.id}"></td>
+                        <td th:file="${produto.foto}"></td>
                         <td th:text="${produto.nome}"></td>
                         <td th:text="${produto.categoria}"></td>
                         <td>
