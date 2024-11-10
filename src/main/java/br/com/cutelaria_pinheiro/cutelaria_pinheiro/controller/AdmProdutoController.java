@@ -22,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.model.Produto;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.ProdutoService;
 import jakarta.validation.Valid;
-import jakarta.websocket.server.PathParam;
+
 
 
 @Controller
