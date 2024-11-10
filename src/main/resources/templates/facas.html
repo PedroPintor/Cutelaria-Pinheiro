@@ -77,24 +77,16 @@
             <div class="steps">
                 <p>explicando como se personaliza em 3 passos</p>
             </div>
-            <div class="steps">
-                <ol>
-                    <li>selecione o cabo</li>
-                    <li>seleciona a lâmina</li>
-                    <li>observações finais</li>
-                </ol>
+            <div class="steps" th:each="produto : ${produtos}">
+                <img th:src="@{${produto.foto}}" alt="Imagem do Produto" />
+                <!-- <img th:if="${image != null}" th:src="'data:image/jpeg;base64,' + ${image}" alt="Imagem do Produto" class="img-thumbnail mt-2" /> -->
+                <p th:text="${produto.nome}">Nome do Produto</p>
+                <p th:text="${produto.categoria}">Categoria do Produto</p>
+                <a th:href="@{/produtos/informacoes/{id}(id=${produto.id})}">Ver Produto</a>
             </div>
             <div class="personalize-button">
                 <button>Personalizar</button>
             </div>
-        </div>
-
-        <div class="gallery">
-            <td for="imagem">
-                
-                
-                <a id="imagem" th:href="@{/produtos/informacoes/{id}( id = produto.id)}"></a>
-            </td>
         </div>
     </div>
 

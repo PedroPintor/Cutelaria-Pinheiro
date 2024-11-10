@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+
 @Entity
 @Table( name = "bdd_clientes",schema = "CUTELARIA")
 public class Cliente {

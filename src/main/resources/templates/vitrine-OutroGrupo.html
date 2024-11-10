@@ -33,12 +33,12 @@
     </header>
     <p>Uma boa faca de churrasco é uma ferramenta essencial para cortar e servir carne de forma eficiente e precisa.</p>
     <div class="grid">
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
+        <div class="steps" th:each="produto : ${produtos}">
+            <img th:src="@{${produto.imagem}}" alt="Imagem do Produto" />
+            <p th:text="${produto.nome}">Nome do Produto</p>
+            <p th:text="${produto.categoria}">Categoria do Produto</p>
+            <a th:href="@{/produtos/informacoes/{id}(id=${produto.id})}">Ver Produto</a>
+        </div>
     </div>
 </div>
 </body>
