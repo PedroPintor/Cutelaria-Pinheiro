@@ -58,10 +58,10 @@
                         <td th:text="${cliente.email}"></td>
                         <td th:text="${cliente.whatsapp}"></td>
                         <td>
-                            <a th:if="${cliente.id != null}" th:href="@{/administrador/clientes/editar/{id}(id=${cliente.id})}" class="btn btn-warning btn-sm">Editar</a>
+                            <a th:if="@{cliente.id != null}" th:href="@{/administrador/clientes/editar/{id}(id=${cliente.id})}" class="btn btn-warning btn-sm">Editar</a>
                         </td>
                         <td>
-                            <a th:if="${cliente.id != null}" th:href="@{/administrador/clientes/remover/{id}(id=${cliente.id})}" class="btn btn-danger btn-sm">Remover</a>
+                            <a th:if="@{cliente.id != null}" th:href="@{/administrador/clientes/remover/{id}(id=${cliente.id})}" class="btn btn-danger btn-sm">Remover</a>
                         </td>
                     </tr>
                 </tbody>

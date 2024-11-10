@@ -29,7 +29,13 @@ public class ClienteService {
         return clienteRepository.findById(id);
     }
 
+    public Cliente findById(UUID id){
+        return clienteRepository.findById(id).orElse(null);
+    }
+
     public void deleteById(UUID id){
         clienteRepository.deleteById(id);
     }
+
+
 }
