@@ -1,7 +1,6 @@
 package br.com.cutelaria_pinheiro.cutelaria_pinheiro.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +31,10 @@ public class ProdutoService {
         byte[] imagem = (produto != null) ? produto.getFoto() : null;
         
         return imagem;
+    }
+
+    public void deleteById(UUID id){
+        produtoRepository.deleteById(id);
     }
 
 }
