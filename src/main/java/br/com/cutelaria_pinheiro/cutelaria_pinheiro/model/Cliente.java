@@ -32,12 +32,12 @@ public class Cliente {
     @Column(name = "WHATSAPP", nullable = false, unique = true)
     private String whatsapp;
 
-    public UUID getId_cliente() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId_cliente(UUID id_cliente) {
-        this.id = id_cliente;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getNome() {
