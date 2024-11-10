@@ -32,5 +32,17 @@ public class CutelariaController {
     public String pag_tabuas(){
         return "/tabuas";
     }
-     
+
+    // página de comentários
+    @GetMapping("/comentarios")
+    public String pag_comentarios(){
+        return "/comentarios-OutroGrupo";
+    }
+
+    // página de vitrine
+    @GetMapping("/vitrine")
+    public String pag_vitrine(){
+        return "/vitrine-OutroGrupo";
+    }
+
 }
