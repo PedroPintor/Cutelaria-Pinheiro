@@ -27,7 +27,7 @@ public class CutelariaController {
     @GetMapping("/facas")
     public String pag_facas(ModelMap model){
         model.addAttribute("produtos", produtoService.findAllFacas(CATEGORIA_FACA));
-        return "/facas";
+        return "/vitrineFacas";
     }
 
     // pagina de cutelos
