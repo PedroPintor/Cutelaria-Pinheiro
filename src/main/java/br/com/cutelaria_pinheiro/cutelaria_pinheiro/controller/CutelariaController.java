@@ -54,4 +54,10 @@ public class CutelariaController {
         return "/vitrine-OutroGrupo";
     }
 
+
+     // página de index-OG
+     @GetMapping("/index-OG")
+     public String pag_indexOG(){
+         return "/index-outroGrupo";
+     }
 }
