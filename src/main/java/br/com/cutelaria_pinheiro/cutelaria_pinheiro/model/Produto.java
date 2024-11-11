@@ -1,6 +1,7 @@
 package br.com.cutelaria_pinheiro.cutelaria_pinheiro.model;
 
 import java.util.UUID;
+import java.util.Base64;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
@@ -64,6 +65,13 @@ public class Produto {
 
     public void setFoto(byte[] foto) {
         this.foto = foto;
+    }
+    
+    public String getFotoBase() {
+        if (foto != null) {
+            return Base64.getEncoder().encodeToString(foto);
+        }
+        return null; // ou uma string vazia, dependendo da sua necessidade
     }
     
 }
