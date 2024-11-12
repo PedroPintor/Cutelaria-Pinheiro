@@ -15,8 +15,6 @@ public class CutelariaController {
         return "/index";
     }
 
-
-
     // pagina de cutelos
     @GetMapping("/cutelos")
     public String pag_cutelos(){
