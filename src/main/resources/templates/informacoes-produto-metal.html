@@ -34,6 +34,13 @@
             font-size: 18px;
             color: #666;
         }
+        .product-details {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .product-details p {
+            margin: 5px 0;
+        }
     </style>
 </head>
 <body>
@@ -43,6 +50,15 @@
         <h1 class="product-name" th:text="${produto.nome}">Nome do Produto</h1>
         <img class="product-image" th:src="'data:image/jpeg;base64,' + ${produto.getFotoBase()}" alt="Imagem do Produto">
         <p class="product-category" th:text="${produto.categoria}">Categoria do Produto</p>
+        
+        <div class="product-details">
+            <p><strong>Material da Lâmina:</strong> <span th:text="${produto.material_Lamina}">Material da Lâmina</span></p>
+            <p><strong>Material do Cabo:</strong> <span th:text="${produto.materia_cabo}">Material do Cabo</span></p>
+            <p><strong>Comprimento da Lâmina:</strong> <span th:text="${produto.comp_lamina}">Comprimento da Lâmina</span> pol</p>
+            <p><strong>Dorso:</strong> <span th:text="${produto.dorso}">Dorso</span> mm</p>
+            <p><strong>Comprimento Total:</strong> <span th:text="${produto.comp_total}">Comprimento Total</span> cm</p>
+            <p><strong>Largura da Lâmina:</strong> <span th:text="${produto.larg_lamina}">Largura da Lâmina</span> cm</p>
+        </div>
     </div>
 </div>
 

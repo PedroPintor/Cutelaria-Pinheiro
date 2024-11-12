@@ -29,6 +29,23 @@ public class Madeira {
     @Column(name = "FOTO")
     private byte[] foto;
 
+    @Column(name = "ACABAMENTO")
+    private String acabamento;
+
+    @Column(name = "COMPRIMENTO")
+    private String comprimento;
+
+    @Column(name = "LARGURA")
+    private String largura;
+
+    @Column(name = "ESPESSURA")
+    private String espessura;
+
+    @Column(name = "MATERIAL")
+    private String material;
+
+
+
     // metodos
     public UUID getId() {
         return id;
@@ -60,6 +77,38 @@ public class Madeira {
             return Base64.getEncoder().encodeToString(foto);
         }
         return null; // ou uma string vazia, dependendo da sua necessidade
+    }
+
+    public String getAcabamento() {
+        return acabamento;
+    }
+
+    public void setAcabamento(String acabamento) {
+        this.acabamento = acabamento;
+    }
+
+    public String getComprimento() {
+        return comprimento;
+    }
+
+    public void setComprimento(String comprimento) {
+        this.comprimento = comprimento;
+    }
+
+    public String getLargura() {
+        return largura;
+    }
+
+    public void setLargura(String largura) {
+        this.largura = largura;
+    }
+
+    public String getEspessura() {
+        return espessura;
+    }
+
+    public void setEspessura(String espessura) {
+        this.espessura = espessura;
     }
 
 }

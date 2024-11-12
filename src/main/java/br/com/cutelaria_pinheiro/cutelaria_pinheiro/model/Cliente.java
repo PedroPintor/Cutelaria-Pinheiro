@@ -33,6 +33,9 @@ public class Cliente {
     @Column(name = "WHATSAPP", nullable = false, unique = true)
     private String whatsapp;
 
+    @Column(name = "JA_COMPROU", nullable = false, unique = true)
+    private String ja_comprou;
+
     public UUID getId() {
         return this.id;
     }
@@ -73,6 +76,12 @@ public class Cliente {
         this.whatsapp = whatsapp;
     }
 
-    
+    public String getJa_comprou() {
+        return ja_comprou;
+    }
+
+    public void setJa_comprou(String ja_comprou) {
+        this.ja_comprou = ja_comprou;
+    }
 
 }
