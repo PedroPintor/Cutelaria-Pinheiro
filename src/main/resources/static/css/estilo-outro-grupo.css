@@ -1,0 +1,218 @@
+/* Header Styling */
+.header-container {
+    background-color: #000; /* Set your desired background color */
+    padding: 20px 0;
+}
+
+/* Logo Styling */
+.navbar-logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 30%; /* Adjust size as needed */
+    margin-right: 28%;
+}
+
+/* Navigation Links */
+.navbar-nav .nav-link {
+    color: #fff !important; /* White text */
+    font-size: 150%;
+    transition: color 0.3s ease;
+    margin: 0 95px;
+}
+.navbar-nav .nav-link:hover {
+    color: #ccc !important; /* Hover effect */
+}
+
+/* Social Icons */
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icons a {
+    color: #fff;
+    margin-left: 15px;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #ccc; /* Hover effect */
+}
+
+.carousel-item {
+    /* Styles for all elements with class 'carousel' */
+    max-height: 450px; /* Example max width */
+}
+
+.card-img-top {
+    max-height: 50%;
+    text-align: center;
+}
+
+.review-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stars {
+    color: #f39c12; /* Gold color for stars */
+    font-size: 1.2rem;
+}
+
+.reviewer-image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.reviewer-name {
+    font-weight: bold;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color:black;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.accordion-container {
+    width: 70%;
+    margin: 0 auto; /* Centers the accordion horizontally */
+    padding-top: 20px; /* Optional: Adds some padding at the top */
+}
+
+.accordion-item {
+    border: none; /* Optional: Customize borders */
+    background-color: #f9f9f9;
+}
+
+.accordion-comentario {
+    text-align: center;
+    color: #000;
+    font-size: 100%
+}
+
+.accordion-comentario a {
+    color: #25d366;
+}
+
+.titulofaq {
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+.card-link {
+    color: black;       /* Keeps the original color of the heading */
+}
+
+/* Footer styling */
+.footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+}
+
+.footer-logo {
+    width: 100px;
+    text-align: center;
+    color: white
+}
+
+.footer-link {
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+    text-align: center;
+    color: white
+}
+
+.footer-icon {
+    color: white;
+    margin-right: 15px;
+    transition: color 0.3s;
+    text-align: center;
+}
+
+.footer-icon:hover {
+    color: #ccc;
+    text-align: center;
+}
+
+.footer p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    color: white
+}
+
+.container-fluid {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.container-fluid p {
+    margin-right: 15%;
+}
+
+.container-fluid img {
+    margin-left: 10%;
+}
+
+.img-fluid {
+    max-width: 65%;
+    height: auto;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+.personalizacao {
+    background-color: #000;
+    color: #ccc;
+}
+
+.personalizacao p{
+    margin-right: 20%;
+    margin-left: 1%;
+}
+
+.personalizacao img {
+    margin-left: 10%;
+}
+
+.mestre-artesão {
+    background-color: #212121;
+}
+
+.mestre-artesão p {
+    color: #ccc;
+    margin-right: 10%;
+    margin-left: 1%;
+}
+
+.mestre-artesão h1 {
+    color: #ccc;
+}
+
+.mestre-artesão img {
+    margin-left: 10%;
+}
