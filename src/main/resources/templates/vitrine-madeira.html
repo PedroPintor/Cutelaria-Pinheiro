@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" th:href="@{/css/estilo-outro-grupo.css}">
+    <title>Produtos de Madeira</title>
+</head>
+<body>
+
+<header class="header-container">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col text-center">
+                <img th:src="@{/images/logo.png}" alt="Cutelaria Pinheiro" class="navbar-logo">
+            </div>
+            <div class="col-auto ms-auto">
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/cutelariapinheiroltda/"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/cutelariapinheiroltda/"><i class="bi bi-instagram"></i></a>
+                    <a href="https://cutelariapinheiro.com.br/"><i class="bi bi-cart"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <header class="header">
+        <h1>Produtos de Madeira</h1>
+        <button class="personalize-button">Personalize</button>
+    </header>
+    <p> EDITAR DEPOIS</p>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" th:each="madeira : ${madeiras}">
+            <div class="card h-100">
+                <img th:if="${madeira.getFotoBase() != null}" th:src="'data:image/jpeg;base64,' + ${madeira.getFotoBase()}" alt="Imagem do Produto" class="card-img-top" style="height: 200px; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h5 class="card-title" th:text="${madeira.nome}">Nome do Produto</h5>
+                    <p class="card-text" th:text="${madeira.categoria}">Categoria do Produto</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a th:href="@{/cutelaria-pinheiro/produtos/madeira/informacao/{id}(id=${madeira.id})}" class="btn btn-primary">Ver Produto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
