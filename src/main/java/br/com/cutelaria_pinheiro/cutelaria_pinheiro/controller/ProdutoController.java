@@ -36,15 +36,13 @@ public class ProdutoController {
     @GetMapping("/metal/informacao/{id}")
     public String informacoes_produto(@PathVariable UUID id, ModelMap model ){   
         try{
-            model.addAttribute(" produto", produtoService.findById(id));
-            return "/informacoes-produto-metal";
+            model.addAttribute("produto", produtoService.findById(id));
             
         }catch(Exception e){
             System.out.println("erro: " + e.getMessage());
             return "redirect:/cutelaria-pinheiro/produtos/metal";
         }
+        return "/informacoes-produto-metal";
     }
-    
-    
     
 }

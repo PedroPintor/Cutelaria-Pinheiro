@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +41,7 @@
 <div class="container">
     <div class="product-info" th:object="${produto}">
         <h1 class="product-name" th:text="${produto.nome}">Nome do Produto</h1>
-        <img class="product-image" th:src="${produto.foto.getFotoBase()}" alt="Imagem do Produto">
+        <img class="product-image" th:src="'data:image/jpeg;base64,' + ${produto.getFotoBase()}" alt="Imagem do Produto">
         <p class="product-category" th:text="${produto.categoria}">Categoria do Produto</p>
     </div>
 </div>
