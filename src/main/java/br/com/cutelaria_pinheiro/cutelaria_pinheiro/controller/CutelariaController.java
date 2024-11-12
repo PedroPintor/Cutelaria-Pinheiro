@@ -15,7 +15,7 @@ public class CutelariaController {
     @Autowired
     private ProdutoService produtoService;
 
-    private final String CATEGORIA_FACA = "faca de churrasco";
+    
 
     // pagina principal
     @GetMapping("")
@@ -23,12 +23,7 @@ public class CutelariaController {
         return "/index";
     }
 
-    // pagina de facas 
-    @GetMapping("/facas")
-    public String pag_facas(ModelMap model){
-        model.addAttribute("produtos", produtoService.findAllFacas(CATEGORIA_FACA));
-        return "/vitrineFacas";
-    }
+
 
     // pagina de cutelos
     @GetMapping("/cutelos")
