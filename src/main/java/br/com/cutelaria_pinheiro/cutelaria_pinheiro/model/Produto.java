@@ -33,6 +33,28 @@ public class Produto {
     @Column(name = "FOTO")
     private byte[] foto;
     
+    @Column( name = "MATERIAL_LAMINA")
+    private String material_Lamina;
+
+    @Column( name = "MATERIAL_CABO")
+    private String materia_cabo;
+
+    @Column( name = "COMP_LAMINA")
+    private String comp_lamina;
+
+    @Column( name = "DORSO")
+    private String dorso;
+
+    @Column( name = "COMP_TOTAL")
+    private String comp_total;
+
+    @Column( name = "LARG_LAMINA")
+    private String larg_lamina;
+
+
+
+
+
     // metodos
     
     public UUID getId() {
@@ -74,4 +96,51 @@ public class Produto {
         return null; // ou uma string vazia, dependendo da sua necessidade
     }
     
+    public String getMaterial_Lamina() {
+        return material_Lamina;
+    }
+
+    public void setMaterial_Lamina(String material_Lamina) {
+        this.material_Lamina = material_Lamina;
+    }
+
+    public String getMateria_cabo() {
+        return materia_cabo;
+    }
+
+    public void setMateria_cabo(String materia_cabo) {
+        this.materia_cabo = materia_cabo;
+    }
+
+    public String getComp_lamina() {
+        return comp_lamina;
+    }
+
+    public void setComp_lamina(String comp_lamina) {
+        this.comp_lamina = comp_lamina;
+    }
+
+    public String getDorso() {
+        return dorso;
+    }
+
+    public void setDorso(String dorso) {
+        this.dorso = dorso;
+    }
+
+    public String getComp_total() {
+        return comp_total;
+    }
+
+    public void setComp_total(String comp_total) {
+        this.comp_total = comp_total;
+    }
+
+    public String getLarg_lamina() {
+        return larg_lamina;
+    }
+
+    public void setLarg_lamina(String larg_lamina) {
+        this.larg_lamina = larg_lamina;
+    }
 }
