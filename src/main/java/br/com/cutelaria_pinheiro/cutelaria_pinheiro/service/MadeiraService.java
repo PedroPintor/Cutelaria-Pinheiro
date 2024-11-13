@@ -23,5 +23,13 @@ public class MadeiraService {
     public Optional<Madeira> findById(UUID id){
         return madeiraRepository.findById(id);
     }
+
+    public Madeira salvar(Madeira madeira){
+        return madeiraRepository.save(madeira);
+    }
+
+    public void deletar(UUID id){
+        madeiraRepository.deleteById(id);
+    }
     
 }
