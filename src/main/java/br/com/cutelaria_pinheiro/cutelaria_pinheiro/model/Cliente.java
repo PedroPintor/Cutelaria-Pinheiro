@@ -33,8 +33,8 @@ public class Cliente {
     @Column(name = "WHATSAPP", nullable = false, unique = true)
     private String whatsapp;
 
-    @Column(name = "JA_COMPROU", nullable = false, unique = true)
-    private String ja_comprou;
+    @Column(name = "JA_COMPROU")
+    private String jaComprou;
 
     public UUID getId() {
         return this.id;
@@ -77,11 +77,11 @@ public class Cliente {
     }
 
     public String getJa_comprou() {
-        return ja_comprou;
+        return jaComprou;
     }
 
     public void setJa_comprou(String ja_comprou) {
-        this.ja_comprou = ja_comprou;
+        this.jaComprou = ja_comprou;
     }
 
 }

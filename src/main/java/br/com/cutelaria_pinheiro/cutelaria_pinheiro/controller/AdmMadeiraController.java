@@ -1,5 +1,6 @@
 package br.com.cutelaria_pinheiro.cutelaria_pinheiro.controller;
 
+
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.model.Madeira;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.MadeiraService;
@@ -35,7 +38,7 @@ public class AdmMadeiraController {
             System.err.println("erro: " + e.getMessage());
             return "redirect:/cutelaria-pinheiro";
         }
-        return "/adm-madeiras";
+        return "adm-madeiras";
     }
 
     // inserir um novo produto de Maderia
@@ -48,17 +51,26 @@ public class AdmMadeiraController {
             System.err.println("erro: " + e.getMessage());
             return "redirect:/administrador/madeiras/listar";
         }
-        return "/inserirMadeira";
+        return "inserirMadeira";
     }
 
     // vai receber um requisiçao POST da pagina, e salvar no banco de dados
     @PostMapping("/salvar")
-    public String adicionar_novo_produtoDeMadeira(Madeira madeira) {
+    public String adicionar_novo_produtoDeMadeira(Madeira madeira, @RequestParam("file") MultipartFile foto, 
+                                                    ModelMap model) {
         try {
+            if (!foto.isEmpty()){
+                if (foto.getSize() > 2 * 1024 * 1024) { // 2 MB
+                    model.addAttribute("error", "O tamanho do arquivo não pode exceder 2 MB.");
+                    return "inserirMadeira";
+                }
+                madeira.setFoto(foto.getBytes());
+            }
+            
             madeiraService.salvar(madeira);
         } catch (Exception e) {
             System.err.println("erro: " + e.getMessage());
-            return "redirect:/administrador/madeiras/inserir";
+            return "redirect:/administrador/madeiras/listar";
         }
         return "redirect:/administrador/madeiras/listar";
     }

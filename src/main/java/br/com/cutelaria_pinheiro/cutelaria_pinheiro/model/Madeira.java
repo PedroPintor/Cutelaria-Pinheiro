@@ -72,13 +72,6 @@ public class Madeira {
         this.foto = foto;
     }
     
-    public String getFotoBase() {
-        if (foto != null) {
-            return Base64.getEncoder().encodeToString(foto);
-        }
-        return null; // ou uma string vazia, dependendo da sua necessidade
-    }
-
     public String getAcabamento() {
         return acabamento;
     }
@@ -109,6 +102,21 @@ public class Madeira {
 
     public void setEspessura(String espessura) {
         this.espessura = espessura;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+
+     public String getFotoBase() {
+        if (foto != null) {
+            return Base64.getEncoder().encodeToString(foto);
+        }
+        return null; // ou uma string vazia, dependendo da sua necessidade
     }
 
 }
