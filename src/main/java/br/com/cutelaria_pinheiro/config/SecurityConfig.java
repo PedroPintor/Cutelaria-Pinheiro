@@ -15,19 +15,19 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.UserService;
+import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.UsuarioService;
 
 
 @Configuration
 public class SecurityConfig {
 
-    @Autowired
-    private UserService userService;
-
+    private final UsuarioService usuarioService;
     private final CustomAuthentication successHandler;
 
-    public SecurityConfig(CustomAuthentication successHandler) {
+
+    public SecurityConfig(CustomAuthentication successHandler, UsuarioService usuarioService) {
         this.successHandler = successHandler;
+        this.usuarioService = usuarioService;
     }
 
  @Bean
@@ -59,14 +59,15 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/cutelaria-pinheiro")
                 .permitAll()
                 // Logout via POST
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout","POST")));
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout","POST"))
+            );
 
             return http.build();
  }
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails admin = User.withUsername("U")
+        UserDetails admin = User.withUsername("vagner")
                 .password(passwordEncoder().encode("123"))
                 .roles("ADMIN")
                 .build();

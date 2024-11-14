@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table( name = "bdd_usuarios", schema = "CUTELARIA")
-public class User {
+public class Usuario {
     
     @Id
     @Basic
@@ -29,6 +29,9 @@ public class User {
 
     @Column( name = "EMAIL")
     private String email;
+
+    @Column( name = "PAPEL")
+    private String papel;
 
     public UUID getId_usuario() {
         return id_usuario;
@@ -60,6 +63,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPapel() {
+        return papel;
+    }
+
+    public void setPapel(String papel) {
+        this.papel = papel;
     }
 
     
