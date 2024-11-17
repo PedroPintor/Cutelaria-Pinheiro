@@ -31,5 +31,9 @@ public class MadeiraService {
     public void deletar(UUID id){
         madeiraRepository.deleteById(id);
     }
+
+    public List<Madeira> findByCategoria(String categoria) {
+        return madeiraRepository.findByCategoria(categoria);
+    }
     
 }

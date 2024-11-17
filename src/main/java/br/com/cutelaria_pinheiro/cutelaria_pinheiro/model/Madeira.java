@@ -44,6 +44,9 @@ public class Madeira {
     @Column(name = "MATERIAL")
     private String material;
 
+    @Column(name = "CATEGORIA")
+    private String categoria;
+
 
 
     // metodos
@@ -118,5 +121,15 @@ public class Madeira {
         }
         return null; // ou uma string vazia, dependendo da sua necessidade
     }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    
 
 }

@@ -52,11 +52,11 @@
         <div class="col-md-3 ">
             <div class="filter-area mb-3">
                 <h5>Filtrar Produtos</h5>
-                <form th:action="@{/cutelaria-pinheiro/produtos/filtros}" method="post">
+                <form th:action="@{/cutelaria-pinheiro/produtos/filtros-metal}" method="post">
                     <div class="mb-3">
                         <label for="categoria">Categoria</label>
                         <select id="categoria" class="form-select" name="descricao">
-                            <option value="">Selecione</option>
+                            <option value="">Sem Filtro</option>
                             <option value="Faca de Cheff Profissional">Faca de Cheff Profissional</option>
                             <option value="Faca de Churrasco">Faca de Churrasco</option>
                             <option value="Faca de Caça e Aventura">Faca de Caça e Aventura</option>

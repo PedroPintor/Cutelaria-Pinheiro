@@ -4,6 +4,7 @@ package br.com.cutelaria_pinheiro.cutelaria_pinheiro.controller;
 
 
 
+import br.com.cutelaria_pinheiro.cutelaria_pinheiro.model.Madeira;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.model.Produto;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.MadeiraService;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.ProdutoService;
@@ -32,6 +33,9 @@ public class ProdutoController {
     @Autowired
     private MadeiraService madeiraService;
 
+     /*
+     *          PRODUTOS DE METAL
+     */
 
     // pagina de facas e cutelos
     @GetMapping("/metal")
@@ -55,9 +59,28 @@ public class ProdutoController {
         return "index/informacoes-produto-metal";
     }
 
+    @PostMapping("/filtros-metal")
+    public String aplicarFiltroMetal(@RequestParam("descricao") String categoria, ModelMap model ) {
+        try {
+            if ( categoria.isEmpty()){
+                model.addAttribute("produtos", produtoService.findAll());
+                return "index/vitrine-metal";
+            }
+            List<Produto> produtos = produtoService.findByCategoria(categoria);
+            if ( produtos.isEmpty()) {
+                model.addAttribute("mensagem", "Nenhum produto encontrado para a categoria: " + categoria);
+            }
+            model.addAttribute("produtos", produtos);
+        } catch (Exception e) {
+            System.err.println("Erro ao aplicar filtro: " + e.getMessage());
+            model.addAttribute("mensagem", "Ocorreu um erro ao buscar os produtos.");
+        }
+        return "index/vitrine-metal";
+    }
+    
     /*
-    *  FALTA FAZER A PAGINA PARA OS PRODUTOS DE MADEIRA  
-    */
+     *          PRODUTOS DE MADEIRA
+     */
 
     // pagina de produtos feitos com madeira
     @GetMapping("/madeira")
@@ -79,21 +102,25 @@ public class ProdutoController {
         return "index/inforcoes-produto-madeira";
     }
 
-
-    @PostMapping("/filtros")
-    public String aplicarFiltro(@RequestParam("descricao") String categoria, ModelMap model ) {
+    @PostMapping("/filtros-madeira")
+    public String aplicarFiltroMadeira(@RequestParam("descricao") String categoria, ModelMap model ) {
         try {
-            List<Produto> produtos = produtoService.findByCategoria(categoria);
-            if ( produtos.isEmpty()) {
-                model.addAttribute("mensagem", "Nenhum produto encontrado para a categoria: " + categoria);
+            if ( categoria.isEmpty()){
+                model.addAttribute("madeiras", madeiraService.findAll());
+                return "index/vitrine-madeira";
             }
-            model.addAttribute("produtos", produtos);
+            List<Madeira> madeira = madeiraService.findByCategoria(categoria);
+            if ( madeira.isEmpty()) {
+                model.addAttribute("mensagem", "Nenhum produto encontrado para a categoria: " + categoria);
+                return "index/vitrine-madeira";
+            }
+            model.addAttribute("madeiras", madeira);
         } catch (Exception e) {
             System.err.println("Erro ao aplicar filtro: " + e.getMessage());
             model.addAttribute("mensagem", "Ocorreu um erro ao buscar os produtos.");
         }
-        return "index/vitrine-metal";
+        return "index/vitrine-madeira";
     }
-    
+
 
 }

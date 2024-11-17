@@ -28,21 +28,59 @@
 </header>
 
 <div class="container">
-    <header class="header">
-        <h1>Produtos de Madeira</h1>
-        <button class="personalize-button">Personalize</button>
-    </header>
-    <p> EDITAR DEPOIS</p>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col" th:each="madeira : ${madeiras}">
-            <div class="card h-100">
-                <img th:if="${madeira.getFotoBase() != null}" th:src="'data:image/jpeg;base64,' + ${madeira.getFotoBase()}" alt="Imagem do Produto" class="card-img-top" style="height: 200px; object-fit: cover;">
-                <div class="card-body text-center">
-                    <h5 class="card-title" th:text="${madeira.nome}">Nome do Produto</h5>
-                    <p class="card-text" th:text="${madeira.categoria}">Categoria do Produto</p>
-                </div>
-                <div class="card-footer text-center">
-                    <a th:href="@{/cutelaria-pinheiro/produtos/madeira/informacao/{id}(id=${madeira.id})}" class="btn btn-primary">Ver Produto</a>
+    <!-- Texto inicial da Pagina -->
+    <div class="row mb-3 align-items-center">
+        <div class="col-md-3"></div>
+        <header class="header col-md-8">
+            <h1>Produtos de Madeira</h1>
+            <p>Uma boa faca de madeira é essencial para cortes precisos e eficientes.</p>
+        </header>
+    </div>
+    <!-- Área da personalização -->
+    <div class="row mb-3 align-items-center">
+        <div class="col-md-3"></div>
+        <header class="header col-md-6">
+            <h3>Personalize</h3>
+            <p>Personalize seu produto aqui e agora !!!</p>
+        </header>
+        <div class="col-md-2 align-self-center">
+            <button class="personalize-button">Personalize</button>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- Área de Filtros -->
+        <div class="col-md-3 ">
+            <div class="filter-area mb-3">
+                <h5>Filtrar Produtos</h5>
+                <form th:action="@{/cutelaria-pinheiro/produtos/filtros-madeira}" method="post">
+                    <div class="mb-3">
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria" class="form-select" name="descricao">
+                            <option value="">Sem Filtro</option>
+                            <option value="Petisqueira">Petisqueira</option>
+                            <option value="Tabuas de Churrasco">Tabuas de churrasco</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Área de Produtos -->
+        <div class="col-md-9 mb-3">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col" th:each="madeira : ${madeiras}">
+                    <div class="card h-100">
+                        <img th:if="${madeira.getFotoBase() != null}" th:src="'data:image/jpeg;base64,' + ${madeira.getFotoBase()}" alt="Imagem do Produto" class="card-img-top" style="height: 200px; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title" th:text="${madeira.nome}">Nome do Produto</h5>
+                            <p class="card-text" th:text="${madeira.categoria}">Categoria do Produto</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a th:href="@{/cutelaria-pinheiro/produtos/madeira/informacao/{id}(id=${madeira.id})}" class="btn btn-primary">Ver Produto</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
