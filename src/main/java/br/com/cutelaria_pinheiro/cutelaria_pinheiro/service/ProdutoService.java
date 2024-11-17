@@ -37,7 +37,7 @@ public class ProdutoService {
         produtoRepository.deleteById(id);
     }
 
-    public List<Produto> findAllFacas(String categoria){
+    public List<Produto> findByCategoria(String categoria){
         return produtoRepository.findByCategoria(categoria);
     }
 

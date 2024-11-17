@@ -37,7 +37,7 @@ public class AdmProdutoController {
     }
 
     @GetMapping("/listar")
-    public String listar(ModelMap model) {
+    public String listar_produto(ModelMap model) {
         List<Produto> produtos = produtoService.findAll();
         List<Produto> sortedProdutos = produtos.stream()
                 .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
@@ -119,6 +119,9 @@ public class AdmProdutoController {
         produtoService.salvar(produto);
         return "redirect:/administrador/produtos/listar";
     }
+
+
+    
 
     
 }

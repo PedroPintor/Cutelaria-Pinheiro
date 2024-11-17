@@ -26,22 +26,63 @@
     </div>
 </header>
 
-<div class="container">
-    <header class="header">
-        <h1>Facas Churrasco</h1>
-        <button class="personalize-button">Personalize</button>
-    </header>
-    <p>Uma boa faca de churrasco é uma ferramenta essencial para cortar e servir carne de forma eficiente e precisa.</p>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col" th:each="produto : ${produtos}">
-            <div class="card h-100">
-                <img th:if="${produto.getFotoBase() != null}" th:src="'data:image/jpeg;base64,' + ${produto.getFotoBase()}" alt="Imagem do Produto" class="card-img-top" style="height: 200px; object-fit: cover;">
-                <div class="card-body text-center">
-                    <h5 class="card-title" th:text="${produto.nome}">Nome do Produto</h5>
-                    <p class="card-text" th:text="${produto.categoria}">Categoria do Produto</p>
-                </div>
-                <div class="card-footer text-center">
-                    <a th:href="@{/cutelaria-pinheiro/produtos/metal/informacao/{id}(id=${produto.id})}" class="btn btn-primary">Ver Produto</a>
+<div class="container ">
+    <!-- Texto inicial da Pagina -->
+    <div class="row mb-3 align-items-center">
+        <div class="col-md-3"></div>
+        <header class="header col-md-8">
+            <h1>Facas</h1>
+            <p>Uma boa faca de churrasco é uma ferramenta essencial para cortar e servir carne de forma eficiente e precisa.</p>
+        </header>
+    </div>
+    <!-- Área da personlizacao -->
+    <div class="row mb-3 align-items-center">
+        <div class="col-md-3"></div>
+        <header class="header col-md-6">
+            <h3>Personalize</h2>
+            <p>Personalize seu produto aqui e agora !!!</p>
+        </header>
+        <div class="col-md-2 align-self-center">
+            <button class="personalize-button" >Personalize</button>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- Área de Filtros -->
+        <div class="col-md-3 ">
+            <div class="filter-area mb-3">
+                <h5>Filtrar Produtos</h5>
+                <form th:action="@{/cutelaria-pinheiro/produtos/filtros}" method="post">
+                    <div class="mb-3">
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria" class="form-select" name="descricao">
+                            <option value="">Selecione</option>
+                            <option value="Faca de Cheff Profissional">Faca de Cheff Profissional</option>
+                            <option value="Faca de Churrasco">Faca de Churrasco</option>
+                            <option value="Faca de Caça e Aventura">Faca de Caça e Aventura</option>
+                            <option value="Facas Tradicionais Artesanais">Facas Tradicionais Artesanais</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Área de Produtos -->
+        <div class="col-md-9 mb-3">
+            
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col" th:each="produto : ${produtos}">
+                    <div class="card h-100">
+                        <img th:if="${produto.getFotoBase() != null}" th:src="'data:image/jpeg;base64,' + ${produto.getFotoBase()}" alt="Imagem do Produto" class="card-img-top" style="height: 200px; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title" th:text="${produto.nome}">Nome do Produto</h5>
+                            <p class="card-text" th:text="${produto.categoria}">Categoria do Produto</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a th:href="@{/cutelaria-pinheiro/produtos/metal/informacao/{id}(id=${produto.id})}" class="btn btn-primary">Ver Produto</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
