@@ -38,7 +38,7 @@ public class AdmMadeiraController {
             System.err.println("erro: " + e.getMessage());
             return "redirect:/cutelaria-pinheiro";
         }
-        return "adm-madeiras";
+        return "adm/adm-madeiras";
     }
 
     // inserir um novo produto de Maderia
@@ -51,7 +51,7 @@ public class AdmMadeiraController {
             System.err.println("erro: " + e.getMessage());
             return "redirect:/administrador/madeiras/listar";
         }
-        return "inserirMadeira";
+        return "adm/inserirMadeira";
     }
 
     // vai receber um requisiçao POST da pagina, e salvar no banco de dados
@@ -62,7 +62,7 @@ public class AdmMadeiraController {
             if (!foto.isEmpty()){
                 if (foto.getSize() > 2 * 1024 * 1024) { // 2 MB
                     model.addAttribute("error", "O tamanho do arquivo não pode exceder 2 MB.");
-                    return "inserirMadeira";
+                    return "adm/inserirMadeira";
                 }
                 madeira.setFoto(foto.getBytes());
             }
@@ -85,7 +85,7 @@ public class AdmMadeiraController {
             System.err.println("erro: " + e.getMessage());
             return "redirect:/administrador/madeiras/listar";
         }
-        return "/removerMadeira";
+        return "adm/removerMadeira";
     }
 
     // vai receber a requisiçao POST da pagina removerMadeira, para remover a
@@ -111,7 +111,7 @@ public class AdmMadeiraController {
             System.err.println("erro: " + e.getMessage());
             return "redirect:/administrador/madeiras/listar";
         }
-        return "/editarMadeira";
+        return "adm/editarMadeira";
     }
 
     // requisiçao POST para salvar as alteraçoes

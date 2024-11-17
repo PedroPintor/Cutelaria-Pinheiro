@@ -10,39 +10,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CutelariaController {
 
     // pagina principal
-    @GetMapping("")
+    @GetMapping("/")
     public String index(){
-        return "/index";
+        return "index/index";
     }
 
     // pagina de cutelos
     @GetMapping("/cutelos")
     public String pag_cutelos(){
-        return "/cutelos";
+        return "index/cutelos";
     }
 
     // pagina de tabuas
     @GetMapping("/tabuas")
     public String pag_tabuas(){
-        return "/tabuas";
+        return "index/tabuas";
     }
 
     // página de comentários
     @GetMapping("/comentarios")
     public String pag_comentarios(){
-        return "/comentarios-OutroGrupo";
+        return "index/comentarios-OutroGrupo";
     }
 
     // página de vitrine
     @GetMapping("/vitrine")
     public String pag_vitrine(){
-        return "/vitrine-OutroGrupo";
+        return "index/vitrine-OutroGrupo";
     }
 
 
      // página de index-OG
      @GetMapping("/index-OG")
      public String pag_indexOG(){
-         return "/index-outroGrupo";
+         return "index/index-outroGrupo";
      }
 }

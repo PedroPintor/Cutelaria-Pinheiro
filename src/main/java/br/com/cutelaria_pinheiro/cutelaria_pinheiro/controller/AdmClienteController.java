@@ -33,7 +33,7 @@ public class AdmClienteController {
                 .sorted((cliente1, cliente2) -> cliente1.getNome().compareTo(cliente2.getNome()))
                 .collect(Collectors.toList());
         model.addAttribute("clientes", sortedClientes);
-        return "/adm-clientes";
+        return "adm/adm-clientes";
     }
 
 
@@ -41,7 +41,7 @@ public class AdmClienteController {
     @GetMapping("/adicionar")
     public String adicionar_cliente(ModelMap model) {
         model.addAttribute("cliente", new Cliente());
-        return "/inserirCliente";
+        return "adm/inserirCliente";
     }
 
     // salvar um novo cliente
@@ -62,7 +62,7 @@ public class AdmClienteController {
     @GetMapping("/remover/{id}")
     public String remover_cliente(@PathVariable UUID id, ModelMap model) {
         model.addAttribute("cliente", clienteService.findCliente(id));
-        return "/removerCliente";
+        return "adm/removerCliente";
     }
 
     // excluir cliente
@@ -88,7 +88,7 @@ public class AdmClienteController {
             if ( clienteService.findCliente(id).isPresent()){
                 model.addAttribute("cliente", clienteService.findById(id));
             }
-            return "/editarCliente";
+            return "adm/editarCliente";
         } catch (Exception e) {
             System.out.println("erro: " + e.getMessage());
             return "/administrador/clientes/listar";
@@ -103,7 +103,7 @@ public class AdmClienteController {
         if (bindingResult.hasErrors()) {
             System.err.println("erro: " + bindingResult.getAllErrors());
             model.addAttribute("cliente", cliente);
-            return "/editarCliente";
+            return "adm/editarCliente";
         }
 
         // Chama o método de atualização no serviço

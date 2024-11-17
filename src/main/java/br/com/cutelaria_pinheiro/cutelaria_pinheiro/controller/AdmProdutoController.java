@@ -38,7 +38,7 @@ public class AdmProdutoController {
                 .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
                 .collect(Collectors.toList());
         model.addAttribute("produtos", sortedProdutos);
-        return "adm-produtos";
+        return "adm/adm-produtos";
     }
 
     @PostMapping("/salvar")
@@ -46,7 +46,7 @@ public class AdmProdutoController {
         try {
             if (file.getSize() > 2 * 1024 * 1024) { // 2 MB
                 modelMap.addAttribute("error", "O tamanho do arquivo não pode exceder 2 MB.");
-                return "/inserirProduto";
+                return "adm//inserirProduto";
             }
 
             if (!file.isEmpty()) {
@@ -56,7 +56,7 @@ public class AdmProdutoController {
         } catch (IOException e) {
             e.printStackTrace();
             modelMap.addAttribute("error", "Erro ao processar o arquivo.");
-            return "/inserirProduto";
+            return "adm/inserirProduto";
         }
         return "redirect:/administrador/produtos/listar";
     }
@@ -64,7 +64,7 @@ public class AdmProdutoController {
     @GetMapping("/adicionar")
     public String inserir(ModelMap model) {
         model.addAttribute("produto", new Produto());
-        return "/inserirProduto";
+        return "adm/inserirProduto";
     }
 
 
@@ -72,7 +72,7 @@ public class AdmProdutoController {
     @GetMapping("/remover/{id}")
     public String remover(@PathVariable UUID id, ModelMap model) {
         model.addAttribute("produto", produtoService.findById(id));
-        return "/removerProduto";
+        return "adm/removerProduto";
     }
 
     @PostMapping("/excluir/{id}")
@@ -100,7 +100,7 @@ public class AdmProdutoController {
             String base64Image = Base64.getEncoder().encodeToString(imageBytes);
             model.addAttribute("image", base64Image);
         }
-        return "/editarProduto";
+        return "adm/editarProduto";
     }
 
     // na pagina de ediçao , esse metodo ira salvar as atulalizaçoes
@@ -109,7 +109,7 @@ public class AdmProdutoController {
             BindingResult bindingResult, ModelMap model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("produto", produto);
-            return "/editarProduto";
+            return "adm/editarProduto";
         }
         produtoService.salvar(produto);
         return "redirect:/administrador/produtos/listar";
