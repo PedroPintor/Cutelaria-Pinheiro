@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Inserir Venda</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Inserir Venda</h1>
+            <form th:action="@{/administrador/vendas/salvar}" th:object="${venda}" method="post" class="needs-validation" novalidate>
+                <div class="form-group">
+                    <label for="cliente">Cliente</label>
+                    <select id="cliente" th:field="*{cliente.id}" class="form-control" required>
+                        <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nome}"></option>
+                    </select>
+                    <div class="invalid-feedback">Por favor, selecione um cliente.</div>
+                </div>
+
+                <h3>Produtos Disponíveis</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Categoria</th>
+                            <th>Quantidade</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="produto : ${produtos}">
+                            <td th:text="${produto.id}"></td>
+                            <td th:text="${produto.nome}"></td>
+                            <td th:text="${produto.categoria}"></td>
+                            <td>
+                                <input type="number" class="form-control" min="1" placeholder="Quantidade" id="quantidade-${produto.id}" />
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" 
+                                        th:attr="onclick='adicionarProduto(${produto.id}, document.getElementById(`quantidade-${produto.id}`).value)'">
+                                    Adicionar
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Produtos Adicionados</h3>
+                <div id="produtosAdicionados" class="mt-4">
+                    <div id="produtos"></div>
+                </div>
+
+                <button type="submit" class="btn btn-success">Salvar Venda</button>
+                <a href="#" th:href="@{/administrador/vendas/listar}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+
+        <script>
+            function adicionarProduto(produtoId, quantidade) {
+                quantidade = parseInt(quantidade);
+                if (quantidade > 0) {
+                    const produtosDiv = document.getElementById('produtos');
+                    const index = produtosDiv.children.length;
+
+                    const newProductHTML = `
+                        <div class="input-group mb-3">
+                            <input type="hidden" th:field="*{produtos[${index}].produtoId}" value="${produtoId}" />
+                            <input type="text" class="form-control" value="${produtoId}" readonly />
+                            <input type="number" class="form-control" th:field="*{produtos[${index}].quantidade}" value="${quantidade}" min="1" required />
+                        </div>
+                    `;
+                    produtosDiv.insertAdjacentHTML('beforeend', newProductHTML);
+                } else {
+                    alert("Por favor, insira uma quantidade válida.");
+                }
+            }
+        </script>
+    </body>
+</html> 
