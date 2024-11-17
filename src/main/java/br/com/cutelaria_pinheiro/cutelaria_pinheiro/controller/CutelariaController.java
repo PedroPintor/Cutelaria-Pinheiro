@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CutelariaController {
 
     // pagina principal
-    @GetMapping("/")
+    @GetMapping({"","/"})
     public String index(){
         return "index/index";
     }

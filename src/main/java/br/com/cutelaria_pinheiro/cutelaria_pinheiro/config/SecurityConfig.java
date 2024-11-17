@@ -49,9 +49,10 @@ public class SecurityConfig {
          http
             .authorizeHttpRequests((authz) -> authz
             .requestMatchers("/adm/**").hasRole("ADMIN")
+            .requestMatchers("/administrador/**").authenticated()
             .requestMatchers("/index/**").permitAll()
             .requestMatchers("/public/**").permitAll() // Acesso público
-            .anyRequest().authenticated() // Qualquer outra requisição requer autenticação
+            .anyRequest().permitAll() // Qualquer outra requisição requer autenticação
             )
             .formLogin((form) -> form
             // Definir página de login personalizada

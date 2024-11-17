@@ -23,9 +23,9 @@ public class CustomAuthentication implements AuthenticationSuccessHandler {
             .collect(Collectors.toSet());
     
             if ( roles.contains("ROLE_ADMIN")){
-                response.sendRedirect("/administrador/clientes/listar");
+                response.sendRedirect("/administrador/produtos/home");
             } else {
-                response.sendRedirect("/cutelaria-pinheiro/");
+                response.sendRedirect("/cutelaria-pinheiro");
             }
 
     }

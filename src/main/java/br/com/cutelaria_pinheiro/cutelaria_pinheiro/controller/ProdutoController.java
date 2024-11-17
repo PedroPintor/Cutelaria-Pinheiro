@@ -31,7 +31,7 @@ public class ProdutoController {
     public String pag_metal(ModelMap model){
         model.addAttribute("produtos", produtoService.findAll());
         
-        return "/vitrine-metal";
+        return "index/vitrine-metal";
     }
     
     // mostrar as informaçoes do produto selecionado
@@ -45,7 +45,7 @@ public class ProdutoController {
             return "redirect:/cutelaria-pinheiro/produtos/metal";
         }
         
-        return "/informacoes-produto-metal";
+        return "index/informacoes-produto-metal";
     }
 
     /*
@@ -57,7 +57,7 @@ public class ProdutoController {
     public String pag_madeira(ModelMap model){
         model.addAttribute("madeiras", madeiraService.findAll());
 
-        return "/vitrine-madeira";
+        return "index/vitrine-madeira";
     }
 
     // mostrar as informaçoes do produto de madeira selecionado
@@ -69,7 +69,7 @@ public class ProdutoController {
             System.err.println("erro: " + e.getMessage());
             return "redirect:/cutelaria-pinheiro/produtos/madeira";
         }
-        return "/inforcoes-produto-madeira";
+        return "index/inforcoes-produto-madeira";
     }
 
     

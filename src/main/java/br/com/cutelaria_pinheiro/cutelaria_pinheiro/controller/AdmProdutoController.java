@@ -31,6 +31,11 @@ public class AdmProdutoController {
     @Autowired
     private ProdutoService produtoService;
 
+    @GetMapping("/home")
+    public String home_admin() {
+        return "adm/adm-home";
+    }
+
     @GetMapping("/listar")
     public String listar(ModelMap model) {
         List<Produto> produtos = produtoService.findAll();
