@@ -51,7 +51,7 @@ public class SecurityConfig {
             .requestMatchers("/adm/**").hasRole("ADMIN")
             .requestMatchers("/administrador/**").authenticated()
             .requestMatchers("/index/**").permitAll()
-            .requestMatchers("/public/**").permitAll() // Acesso público
+            .requestMatchers("/public/**").permitAll() // Acesso público 
             .anyRequest().permitAll() // Qualquer outra requisição requer autenticação
             )
             .formLogin((form) -> form

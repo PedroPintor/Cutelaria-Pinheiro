@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<html lang="br" xmlns:th="http://www.thymeleaf.org">
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header Example</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link rel="stylesheet" th:href="@{/css/estilo-outro-grupo.css}">
+    <style>
+      body {
+          overflow-x: hidden; /* Evita o scroll lateral */
+      }
+  </style>
 </head>
 <body>
 
+  <!-- HEADER -->
 <header class="header-container">
   <div class="container">
       <div class="row align-items-center">
@@ -24,28 +30,28 @@
               </div>
           </div>
       </div>
-
+      <!-- NAV BAR -->
       <nav class="navbar navbar-expand-lg navbar-dark">
           <div class="collapse navbar-collapse justify-content-center">
               <ul class="navbar-nav">
                   <li class="nav-item">
-                      <a class="nav-link" href="#">Página Inicial</a>
+                      <a class="nav-link" href="#">Home</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#">Produtos</a>
+                      <a class="nav-link" href="#area_vitrine">Produtos</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#">Personalização</a>
+                      <a class="nav-link" href="#area_personalizacao">Personalização</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#">FAQ</a>
+                      <a class="nav-link" href="#area_mestre-artesao">Fale Conosco</a>
                   </li>
               </ul>
           </div>
       </nav>
   </div>
 </header>
-
+      <!-- CARROSEU -->
       <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -70,7 +76,8 @@
 
       <br><br><br>
 
-      <div class="container text-center my-5">
+      <!-- ÁREA DA VITRINE  -->
+      <div class="container text-center my-5" id="area_vitrine">
         <h2>Nossas Linhas</h2>
         <div class="row mt-4">
           <div class="col-md-4">
@@ -78,7 +85,7 @@
               <img src="/images/faca1.jpg" class="card-img-top" alt="Facas">
               <div class="card-body">
                 <h5 class="card-title">
-                  <a href="https://cutelariapinheiro.com.br/facas-churrasco/l" class="card-link">Facas</a>
+                  <a href="/cutelaria-pinheiro/produtos/metal" class="card-link">Facas</a>
               </h5>
               </div>
             </div>
@@ -88,7 +95,7 @@
               <img src="/images/faca2.jpg" class="card-img-top" alt="Cutelos">
               <div class="card-body">
                 <h5 class="card-title">
-                  <a href="https://cutelariapinheiro.com.br/facas-cheff?sort_by=best_sellers" class="card-link">Cutelos</a>
+                  <a href="/cutelaria-pinheiro/produtos/metal-cutelo" class="card-link">Cutelos</a>
               </h5>
               </div>
             </div>
@@ -98,7 +105,7 @@
               <img src="/images/facaTatica.jpg" class="card-img-top" alt="Facas Táticas">
               <div class="card-body">
                 <h5 class="card-title">
-                  <a href="https://cutelariapinheiro.com.br/facas-taticas?sort_by=best_sellers" class="card-link">Trabalhos em Madeira</a>
+                  <a href="/cutelaria-pinheiro/produtos/madeira" class="card-link">Trabalhos em Madeira</a>
               </h5>
               </div>
             </div>
@@ -107,8 +114,9 @@
       </div>
 
       <br><br><br>
-
-      <section class="personalizacao" id="fundo">
+      
+      <!-- ÁREA DA PERSONALIZAÇAO -->
+      <section class="personalizacao" id="area_personalizacao">
         <div class="row align-items-center">
             <div class="col-md-6 text-center">
                 <img src="/images/logoFaca.jpg" alt="Facas Personalizadas" class="img-fluid">
@@ -118,10 +126,11 @@
                 <p class="lead">Fazemos facas personalizadas sob encomenda! Podemos trabalhar com você para escolher o tipo de aço, design da lâmina, material do cabo e gravar iniciais ou logotipos. Entre em contato para discutir o seu projeto!</p>
             </div>
         </div>
-    </section>
+      </section>
 
     <br><br>
-
+    
+    <!-- AVALIAÇAO DOS CLIENTES -->
     <section class="reviews-section py-5">
       <div class="container">
           <h2 class="text-center mb-4">Avaliações de nossos clientes</h2>
@@ -194,6 +203,7 @@
 
   <br><br><br>
 
+  <!-- PERGUNTAS FREQUENTES -->
   <div class="titulofaq">
     <h2 id="FAQ">Perguntas Frequntes</h2><br>
     <h5 id="sub">Tire suas dúvidas aqui!</h5>
@@ -256,22 +266,24 @@
     Não encontrou sua dúvida? Contate a gente no Whatsapp! <a href="https://wa.me/5519999968903"><i class="bi bi-whatsapp"></i></a>
   </div><br><br><br><br><br>
 
-  <section class="mestre-artesão" id="fundomestre">
+  <!-- AREA DO MESTRE ARTESAO -->
+  <section class="mestre-artesao" id="area_mestre-artesao">
     <div class="row align-items-center">
         <div class="col-md-6 text-center">
             <img src="/images/mestreArtesao.jpg" alt="mestre" class="img-fluid">
         </div>
-        <div class="col-md-6">
-            <h1 class="display-4">Mestre Artesão </h1>
+        <div class="col-md-3">
+            <h1 class="display-6">Mestre Artesão </h1>
             <p class="lead">Vagner Pinheiro<br>
               Cuteleiro e especialista em forjas facas artesanais<br><br>
               Embora eu tenha sido treinado em diferentes áreas no decorrer da vida, encontrei uma conexão com a arte tradicional de criar instrumentos de cortes artesanais.</p>
         </div>
     </div>
-</section>
+  </section>
 
 <br><br><br><br><br>
 
+<!-- FOOTER -->
   <footer class="footer py-5">
     <div class="container">
         <div class="row">
@@ -303,7 +315,9 @@
         <div class="text-center text-white mt-3">
             <p>Rua Seringueira 218 - Jardim da Alvorada - Nova Odessa</p>
             <p>CNPJ: 41.367.687/0001-85</p>
-            <p>© 2024 Cutelaria Pinheiro</p>
+            <p>
+              <a href="/login" style="color: inherit; text-decoration: none;">© 2024 Cutelaria Pinheiro</a>
+          </p>
         </div>
     </div>
 </footer>
