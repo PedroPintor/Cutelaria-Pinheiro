@@ -6,7 +6,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link rel="stylesheet" th:href="@{/css/estilo-outro-grupo.css}">
-    <title>Produtos de Madeira</title>
 </head>
 <body>
 
@@ -25,25 +24,25 @@
             </div>
         </div>
     </div>
-    <!-- NAV BAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="collapse navbar-collapse justify-content-center">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/cutelaria-pinheiro">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/cutelaria-pinheiro/produtos/metal">Facas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/cutelaria-pinheiro/produtos/cutelo">Cutelos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/cutelaria-pinheiro/produtos/madeira">Trabalhos em Madeira</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+        <!-- NAV BAR -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="collapse navbar-collapse justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cutelaria-pinheiro">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cutelaria-pinheiro/produtos/metal">Facas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cutelaria-pinheiro/produtos/cutelo">Cutelos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cutelaria-pinheiro/produtos/madeira">Trabalhos em Madeira</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 </header>
 
 <div class="container">
@@ -51,8 +50,8 @@
     <div class="row mb-3 align-items-center">
         <div class="col-md-3"></div>
         <header class="header col-md-8">
-            <h1>Produtos de Madeira</h1>
-            <p>Uma boa faca de madeira é essencial para cortes precisos e eficientes.</p>
+            <h1>Cutelos</h1>
+            <p>Um bom cutelo é essencial para preparar carnes e outros alimentos de forma eficiente.</p>
         </header>
     </div>
     <!-- Área da personalização -->
@@ -72,13 +71,14 @@
         <div class="col-md-3 ">
             <div class="filter-area mb-3">
                 <h5>Filtrar Produtos</h5>
-                <form th:action="@{/cutelaria-pinheiro/produtos/filtros-madeira}" method="post">
+                <form th:action="@{/cutelaria-pinheiro/produtos/filtros-cutelo}" method="post">
                     <div class="mb-3">
                         <label for="categoria">Categoria</label>
                         <select id="categoria" class="form-select" name="descricao">
                             <option value="" th:selected="${descricao == ''}">Sem Filtro</option>
-                            <option value="Petisqueira" th:selected="${descricao == 'Petisqueira'}">Petisqueira</option>
-                            <option value="Tabuas de Churrasco" th:selected="${descricao == 'Tabuas de Churrasco'}">Tabuas de churrasco</option>
+                            <option value="Cutelo de Chef" th:selected="${descricao == 'Cutelo de Chef'}">Cutelo de Chef</option>
+                            <option value="Cutelo de Desossa" th:selected="${descricao == 'Cutelo de Desossa'}">Cutelo de Desossa</option>
+                            <option value="Cutelo Tradicional" th:selected="${descricao == 'Cutelo Tradicional'}">Cutelo Tradicional</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
@@ -89,15 +89,15 @@
         <!-- Área de Produtos -->
         <div class="col-md-9 mb-3">
             <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col" th:each="madeira : ${madeiras}">
+                <div class="col" th:each="produto : ${produtos}">
                     <div class="card h-100">
-                        <img th:if="${madeira.getFotoBase() != null}" th:src="'data:image/jpeg;base64,' + ${madeira.getFotoBase()}" alt="Imagem do Produto" class="card-img-top" style="height: 200px; object-fit: cover;">
+                        <img th:if="${produto.getFotoBase() != null}" th:src="'data:image/jpeg;base64,' + ${produto.getFotoBase()}" alt="Imagem do Produto" class="card-img-top" style="height: 200px; object-fit: cover;">
                         <div class="card-body text-center">
-                            <h5 class="card-title" th:text="${madeira.nome}">Nome do Produto</h5>
-                            <p class="card-text" th:text="${madeira.categoria}">Categoria do Produto</p>
+                            <h5 class="card-title" th:text="${produto.nome}">Nome do Produto</h5>
+                            <p class="card-text" th:text="${produto.categoria}">Categoria do Produto</p>
                         </div>
                         <div class="card-footer text-center">
-                            <a th:href="@{/cutelaria-pinheiro/produtos/madeira/informacao/{id}(id=${madeira.id})}" class="btn btn-primary">Ver Produto</a>
+                            <a th:href="@{/cutelaria-pinheiro/produtos/cutelo/informacao/{id}(id=${produto.id})}" class="btn btn-primary">Ver Produto</a>
                         </div>
                     </div>
                 </div>

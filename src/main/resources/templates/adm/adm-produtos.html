@@ -50,7 +50,9 @@
                 </thead>
                 <tbody>
                     <tr th:each="produto : ${produtos}">
-                        <td th:file="${produto.foto}"></td>
+                        <td>
+                            <img th:if="${produto.getFotoBase() != null}" th:src="'data:image/jpeg;base64,' + ${produto.getFotoBase()}" alt="Foto de ${madeira.nome}" style="max-width: 100px; max-height: 100px;"/>
+                        </td>
                         <td th:text="${produto.nome}"></td>
                         <td th:text="${produto.categoria}"></td>
                         <td>

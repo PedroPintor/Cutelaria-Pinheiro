@@ -6,13 +6,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/cutelaria-pinheiro")
+@RequestMapping({"/cutelaria-pinheiro","/teste"})
 public class CutelariaController {
+
+    // pagina de teste para os DEVs
+    @GetMapping("/dev")
+    public String indexDev() {
+        return "index/index-dev";
+    }
 
     // pagina principal
     @GetMapping({"","/"})
     public String index(){
-        return "index/index";
+        return "index/pagina-principal";
     }
 
     // pagina de cutelos

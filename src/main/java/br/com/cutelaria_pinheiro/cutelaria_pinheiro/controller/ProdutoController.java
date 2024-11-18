@@ -4,8 +4,10 @@ package br.com.cutelaria_pinheiro.cutelaria_pinheiro.controller;
 
 
 
+import br.com.cutelaria_pinheiro.cutelaria_pinheiro.model.Cutelo;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.model.Madeira;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.model.Produto;
+import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.CuteloService;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.MadeiraService;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.ProdutoService;
 
@@ -32,6 +34,9 @@ public class ProdutoController {
 
     @Autowired
     private MadeiraService madeiraService;
+
+    @Autowired
+    private CuteloService cuteloService;
 
      /*
      *          PRODUTOS DE METAL
@@ -60,7 +65,8 @@ public class ProdutoController {
     }
 
     @PostMapping("/filtros-metal")
-    public String aplicarFiltroMetal(@RequestParam("descricao") String categoria, ModelMap model ) {
+    public String aplicarFiltroMetal(@RequestParam("descricao") String categoria, ModelMap model,
+                                        ModelMap categoriaSelecionada) {
         try {
             if ( categoria.isEmpty()){
                 model.addAttribute("produtos", produtoService.findAll());
@@ -70,6 +76,7 @@ public class ProdutoController {
             if ( produtos.isEmpty()) {
                 model.addAttribute("mensagem", "Nenhum produto encontrado para a categoria: " + categoria);
             }
+            categoriaSelecionada.addAttribute("descricao", categoria);
             model.addAttribute("produtos", produtos);
         } catch (Exception e) {
             System.err.println("Erro ao aplicar filtro: " + e.getMessage());
@@ -103,7 +110,8 @@ public class ProdutoController {
     }
 
     @PostMapping("/filtros-madeira")
-    public String aplicarFiltroMadeira(@RequestParam("descricao") String categoria, ModelMap model ) {
+    public String aplicarFiltroMadeira(@RequestParam("descricao") String categoria, ModelMap model,
+                                        ModelMap categoriaSelecionada ) {
         try {
             if ( categoria.isEmpty()){
                 model.addAttribute("madeiras", madeiraService.findAll());
@@ -114,6 +122,7 @@ public class ProdutoController {
                 model.addAttribute("mensagem", "Nenhum produto encontrado para a categoria: " + categoria);
                 return "index/vitrine-madeira";
             }
+            categoriaSelecionada.addAttribute("descricao", categoria);
             model.addAttribute("madeiras", madeira);
         } catch (Exception e) {
             System.err.println("Erro ao aplicar filtro: " + e.getMessage());
@@ -122,5 +131,50 @@ public class ProdutoController {
         return "index/vitrine-madeira";
     }
 
+     /*
+     *          PRODUTOS DE CUTELO
+     */
 
+     @GetMapping("/cutelo")
+     public String pag_cutelo(ModelMap model){
+         model.addAttribute("produtos", cuteloService.findAll());
+         
+         return "index/vitrine-cutelo";
+     }
+
+    // mostrar as informaçoes do produto selecionado
+    @GetMapping("/cutelo/informacao/{id}")
+    public String informacoes_produto_cutelo(@PathVariable UUID id, ModelMap model ){   
+        try{
+            model.addAttribute("produto", cuteloService.findById(id));
+            
+        }catch(Exception e){
+            System.out.println("erro: " + e.getMessage());
+            return "redirect:/cutelaria-pinheiro/produtos/metal";
+        }
+        
+        return "index/informacoes-produto-metal";
+    }
+
+    @PostMapping("/filtros-cutelo")
+    public String aplicarFiltroCutelo(@RequestParam("descricao") String categoria, ModelMap model,
+                                        ModelMap categoriaSelecionada) {
+        try {
+            if ( categoria.isEmpty()){
+                model.addAttribute("produtos", cuteloService.findAll());
+                return "index/vitrine-cutelo";
+            }
+            List<Cutelo> produtos = cuteloService.findByCategoria(categoria);
+            if ( produtos.isEmpty()) {
+                model.addAttribute("mensagem", "Nenhum produto encontrado para a categoria: " + categoria);
+            }
+            categoriaSelecionada.addAttribute("descricao", categoria);
+            model.addAttribute("produtos", produtos);
+        } catch (Exception e) {
+            System.err.println("Erro ao aplicar filtro: " + e.getMessage());
+            model.addAttribute("mensagem", "Ocorreu um erro ao buscar os produtos.");
+        }
+        return "index/vitrine-cutelo";
+    }
+    
 }

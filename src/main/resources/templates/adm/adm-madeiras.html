@@ -42,7 +42,7 @@
             <table class="table table-bordered">
                 <thead class="thead-light">
                     <tr>
-                        <th>ID</th>
+                        <th>Foto</th>
                         <th>Nome</th>
                         <th>Categoria</th>
                         <th colspan="2">Ações</th>
@@ -50,9 +50,11 @@
                 </thead>
                 <tbody>
                     <tr th:each="madeira : ${madeiras}">
-                        <td th:file="${madeira.foto}"></td>
+                        <td>
+                            <img th:if="${madeira.getFotoBase() != null}" th:src="'data:image/jpeg;base64,' + ${madeira.getFotoBase()}" alt="Foto de ${madeira.nome}" style="max-width: 100px; max-height: 100px;"/>
+                        </td>
                         <td th:text="${madeira.nome}"></td>
-                        <!-- <td th:text="${madeira.categoria}"></td> -->
+                        <td th:text="${madeira.categoria}"></td>
                         <td>
                             <a th:if="@{ madeira.id != null}" th:href="@{/administrador/produtos/editar/{id}(id=${madeira.id})}" class="btn btn-warning btn-sm">Editar</a>
                         </td>

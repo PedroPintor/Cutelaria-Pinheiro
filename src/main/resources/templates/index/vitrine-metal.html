@@ -24,9 +24,28 @@
             </div>
         </div>
     </div>
+        <!-- NAV BAR -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="collapse navbar-collapse justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cutelaria-pinheiro">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cutelaria-pinheiro/produtos/metal">Facas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cutelaria-pinheiro/produtos/cutelo">Cutelos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cutelaria-pinheiro/produtos/madeira">Trabalhos em Madeira</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 </header>
 
-<div class="container ">
+<div class="container">
     <!-- Texto inicial da Pagina -->
     <div class="row mb-3 align-items-center">
         <div class="col-md-3"></div>
@@ -56,11 +75,11 @@
                     <div class="mb-3">
                         <label for="categoria">Categoria</label>
                         <select id="categoria" class="form-select" name="descricao">
-                            <option value="">Sem Filtro</option>
-                            <option value="Faca de Cheff Profissional">Faca de Cheff Profissional</option>
-                            <option value="Faca de Churrasco">Faca de Churrasco</option>
-                            <option value="Faca de Caça e Aventura">Faca de Caça e Aventura</option>
-                            <option value="Facas Tradicionais Artesanais">Facas Tradicionais Artesanais</option>
+                            <option value="" th:selected="${descricao == ''}">Sem Filtro</option>
+                            <option value="Faca de Cheff Profissional" th:selected="${descricao == 'Faca de Cheff Profissional'}">Faca de Cheff Profissional</option>
+                            <option value="Faca de Churrasco" th:selected="${descricao == 'Faca de Churrasco'}">Faca de Churrasco</option>
+                            <option value="Faca de Caça e Aventura" th:selected="${descricao == 'Faca de Caça e Aventura'}">Faca de Caça e Aventura</option>
+                            <option value="Facas Tradicionais Artesanais" th:selected="${descricao == 'Facas Tradicionais Artesanais'}">Facas Tradicionais Artesanais</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
