@@ -1,7 +1,6 @@
 package br.com.cutelaria_pinheiro.cutelaria_pinheiro.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +19,19 @@ public class CuteloService {
         return cuteloRepository.findAll();
     }
 
-    public Optional<Cutelo> findById(UUID id) {
-        return cuteloRepository.findById(id);
+    public Cutelo findById(UUID id) {
+        return cuteloRepository.findById(id).orElse(null);
     }
 
     public List<Cutelo> findByCategoria(String categoria) {
         return cuteloRepository.findByCategoria(categoria);
+    }
+
+    public Cutelo salvar(Cutelo cutelo) {
+        return cuteloRepository.save(cutelo);
+    }
+
+    public void deleteById(UUID id) {
+        cuteloRepository.deleteById(id);
     }
 }

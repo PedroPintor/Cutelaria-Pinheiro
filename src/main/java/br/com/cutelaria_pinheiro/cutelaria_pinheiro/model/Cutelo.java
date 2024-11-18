@@ -1,5 +1,6 @@
 package br.com.cutelaria_pinheiro.cutelaria_pinheiro.model;
 
+import java.util.Base64;
 import java.util.UUID;
 
 import jakarta.persistence.Basic;
@@ -129,6 +130,11 @@ public class Cutelo {
         this.larg_lamina = larg_lamina;
     }
 
-    
+        public String getFotoBase() {
+        if (foto != null) {
+            return Base64.getEncoder().encodeToString(foto);
+        }
+        return null; // ou uma string vazia, dependendo da sua necessidade
+    }
 
 }
