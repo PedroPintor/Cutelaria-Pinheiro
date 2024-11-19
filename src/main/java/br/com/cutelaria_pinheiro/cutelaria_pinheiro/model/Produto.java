@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table( name = "bdd_produto", schema = "CUTELARIA")
-public class Produto {
+public class Produto extends ProdutoHeranca {
     
 
     @Id
@@ -56,7 +56,6 @@ public class Produto {
 
 
     // metodos
-    
     public UUID getId() {
         return id;
     }

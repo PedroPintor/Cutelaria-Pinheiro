@@ -2,11 +2,13 @@ package br.com.cutelaria_pinheiro.cutelaria_pinheiro.controller;
 
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.model.Venda;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.model.Cliente;
+import br.com.cutelaria_pinheiro.cutelaria_pinheiro.model.Pedido;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.model.Produto;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.VendaService;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.ClienteService;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -73,9 +75,11 @@ public class AdmVendaController {
         return "redirect:/administrador/vendas/listar";
     }
 
-    @PostMapping("/adicionarProduto/{vendaId}")
-    public String adicionarProduto(@PathVariable UUID vendaId, @RequestParam UUID produtoId, @RequestParam int quantidade) {
-        vendaService.adicionarProdutoAVenda(vendaId, produtoId, quantidade);
-        return "redirect:/administrador/vendas/listar"; // Redireciona para a lista de vendas após adicionar o produto
-    }
+    // @PostMapping("/adicionarProduto/{vendaId}")
+    // public String adicionarProduto(@PathVariable UUID vendaId, @RequestParam UUID produtoId, @RequestParam int quantidade) {
+    //     vendaService.adicionarProdutoAVenda(vendaId, produtoId, quantidade);
+    //     return "redirect:/administrador/vendas/listar"; // Redireciona para a lista de vendas após adicionar o produto
+    // }
+
+
 } 

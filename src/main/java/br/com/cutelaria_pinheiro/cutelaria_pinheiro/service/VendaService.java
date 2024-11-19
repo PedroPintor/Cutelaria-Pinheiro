@@ -29,12 +29,4 @@ public class VendaService {
         vendaRepository.deleteById(id);
     }
 
-    public Venda adicionarProdutoAVenda(UUID vendaId, UUID produtoId, int quantidade) {
-        Venda venda = buscarVendaPorId(vendaId);
-        if (venda != null && quantidade > 0 && produtoId != null) {
-            venda.adicionarProduto(produtoId, quantidade);
-            return vendaRepository.save(venda); // Salva a venda atualizada
-        }
-        return null; // Venda não encontrada
-    }
 } 

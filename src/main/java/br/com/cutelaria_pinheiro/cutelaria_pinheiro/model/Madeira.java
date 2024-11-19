@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "bdd_madeira", schema = "CUTELARIA")
-public class Madeira {
+public class Madeira extends ProdutoHeranca {
 
     @Id
     @Basic
