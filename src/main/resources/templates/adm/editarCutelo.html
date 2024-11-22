@@ -1,42 +1,81 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Cutelo</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <div class="container mt-4">
+    <div class="container">
         <h1>Editar Cutelo</h1>
-        <form action="#" th:action="@{/administrador/cutelos/atualizar}" th:object="${cutelo}" method="post">
+        <form th:action="@{/administrador/cutelos/atualizar(id=${cutelo.id})}" th:object="${cutelo}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
             <div class="form-group">
-                <label for="idCutelo">Código</label>
-                <input type="text" class="form-control" id="idCutelo" th:field="*{id}" placeholder="Código" readonly required>
-            </div>
-            <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" th:field="*{nome}" placeholder="Nome" maxlength="20" required>
+                <label for="nome">Nome do Cutelo</label>
+                <input type="text" class="form-control" id="nome" th:field="*{nome}" placeholder="Digite o nome do cutelo" required>
+                <div class="invalid-feedback">Por favor, insira o nome do cutelo.</div>
             </div>
             <div class="form-group">
                 <label for="categoria">Categoria</label>
-                <input type="text" class="form-control" id="categoria" th:field="*{categoria}" placeholder="Categoria" required>
+                <select class="form-control" id="categoria" th:field="*{categoria}" required>
+                    <option value="" disabled>Selecione uma categoria</option>
+                    <option value="Cutelo de Cozinha" th:selected="${cutelo.categoria == 'Cutelo de Cozinha'}">Cutelo de Cozinha</option>
+                    <option value="Cutelo de Churrasco" th:selected="${cutelo.categoria == 'Cutelo de Churrasco'}">Cutelo de Churrasco</option>
+                    <option value="Cutelo de Caça e Aventura" th:selected="${cutelo.categoria == 'Cutelo de Caça e Aventura'}">Cutelo de Caça e Aventura</option>
+                    <option value="Cutelos Tradicionais Artesanais" th:selected="${cutelo.categoria == 'Cutelos Tradicionais Artesanais'}">Cutelos Tradicionais Artesanais</option>
+                </select>
+                <div class="invalid-feedback">Por favor, selecione uma categoria.</div>
             </div>
             <div class="form-group">
-                <label for="imagem">Foto</label>
-                <input type="file" class="form-control" id="imagem" name="imagem">
-                <img th:if="${image != null}" th:src="'data:image/jpeg;base64,' + ${image}" alt="Imagem do Cutelo" class="img-thumbnail mt-2" />
+                <label for="file">Foto do Cutelo</label>
+                <input type="file" class="form-control-file" id="file" name="file">
+                <div class="invalid-feedback">Por favor, faça o upload de uma foto do cutelo.</div>
+                <img th:if="${cutelo.fotoBase != null}" th:src="'data:image/jpeg;base64,' + ${cutelo.fotoBase}" alt="Imagem do Cutelo" class="img-thumbnail mt-2" />
+                <input type="hidden" th:field="*{foto}" th:value="${cutelo.fotoBase}" />
             </div>
 
-            <!-- Adicione aqui os campos específicos para o cutelo, se necessário -->
-            <!-- ... -->
-
-            <div class="d-flex justify-content-between mt-4">
-                <button type="submit" class="btn btn-primary">Salvar</button>
-                <a href="#" th:href="@{/cutelaria-pinheiro}" class="btn btn-info">Principal</a>
+            <div class="form-group">
+                <label>Medidas do Cutelo</label>
+                <div class="row">
+                    <div class="col">
+                        <label for="materialLamina">Material da Lâmina</label>
+                        <input type="text" class="form-control form-control-sm" id="materialLamina" th:field="*{material_Lamina}" placeholder="Material" required>
+                        <div class="invalid-feedback">Por favor, insira o material da lâmina.</div>
+                    </div>
+                    <div class="col">
+                        <label for="materialCabo">Material do Cabo</label>
+                        <input type="text" class="form-control form-control-sm" id="materialCabo" th:field="*{materia_cabo}" placeholder="Material" required>
+                        <div class="invalid-feedback">Por favor, insira o material do cabo.</div>
+                    </div>
+                    <div class="col">
+                        <label for="compLamina">Comp. Lâmina (pol)</label>
+                        <input type="text" class="form-control form-control-sm" id="compLamina" th:field="*{comp_lamina}" placeholder="Polegadas" required>
+                        <div class="invalid-feedback">Por favor, insira o comprimento da lâmina.</div>
+                    </div>
+                    <div class="col">
+                        <label for="dorso">Dorso (mm)</label>
+                        <input type="text" class="form-control form-control-sm" id="dorso" th:field="*{dorso}" placeholder="mm" required>
+                        <div class="invalid-feedback">Por favor, insira o dorso.</div>
+                    </div>
+                    <div class="col">
+                        <label for="compTotal">Comp. Total (cm)</label>
+                        <input type="text" class="form-control form-control-sm" id="compTotal" th:field="*{comp_total}" placeholder="cm" required>
+                        <div class="invalid-feedback">Por favor, insira o comprimento total.</div>
+                    </div>
+                    <div class="col">
+                        <label for="largLamina">Larg. Lâmina (cm)</label>
+                        <input type="text" class="form-control form-control-sm" id="largLamina" th:field="*{larg_lamina}" placeholder="cm" required>
+                        <div class="invalid-feedback">Por favor, insira a largura da lâmina.</div>
+                    </div>
+                </div>
             </div>
-            <a href="#" th:href="@{/administrador/cutelos/listar}" class="btn btn-secondary mt-2">Cancelar</a>
+
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="#" th:href="@{/administrador/cutelos/listar}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </body>

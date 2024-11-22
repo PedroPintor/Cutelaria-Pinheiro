@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.model.Produto;
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.ProdutoService;
-import jakarta.validation.Valid;
+
 
 
 
@@ -110,14 +109,26 @@ public class AdmProdutoController {
 
     // na pagina de ediçao , esse metodo ira salvar as atulalizaçoes
     @PostMapping("/atualizar")
-    public String atualizar(@Valid @ModelAttribute Produto produto,
-            BindingResult bindingResult, ModelMap model) {
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("produto", produto);
-            return "adm/editarProduto";
+    public String atualizar(@ModelAttribute Produto produto, @RequestParam("imagem") MultipartFile imagem, ModelMap model) {
+        try {
+            // Verifica se um novo arquivo foi enviado
+            if (!imagem.isEmpty()) {
+                // Se um novo arquivo foi enviado, converta-o e defina a nova foto
+                produto.setFoto(imagem.getBytes());
+            } else {
+                // Se nenhum novo arquivo foi enviado, mantenha a foto antiga
+                Produto produtoExistente = produtoService.findById(produto.getId());
+                produto.setFoto(produtoExistente.getFoto());
+            }
+
+            // Atualiza o produto no banco de dados
+            produtoService.salvar(produto);
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("error", "Erro ao atualizar o produto.");
+            return "adm/editarProduto"; // Retorna para a página de edição em caso de erro
         }
-        produtoService.salvar(produto);
-        return "redirect:/administrador/produtos/listar";
+        return "redirect:/administrador/produtos/listar"; // Redireciona para a lista de produtos
     }
 
 

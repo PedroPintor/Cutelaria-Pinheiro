@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.model.Cutelo; // Importar o modelo Cutelo
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.service.CuteloService; // Importar o serviço CuteloService
@@ -50,9 +52,27 @@ public class AdmCuteloController {
     }
 
     @PostMapping("/atualizar")
-    public String atualizar(@ModelAttribute Cutelo cutelo) {
-        cuteloService.salvar(cutelo); // Atualizar o cutelo
-        return "redirect:/administrador/cutelos/listar"; // Redirecionar para a lista
+    public String atualizar(@ModelAttribute Cutelo cutelo, @RequestParam("file") MultipartFile file, ModelMap model) {
+        try {
+            // Verifica se um novo arquivo foi enviado
+            if (!file.isEmpty()) {
+                // Se um novo arquivo foi enviado, converta-o e defina a nova foto
+                cutelo.setFoto(file.getBytes());
+            } else {
+                // Se nenhum novo arquivo foi enviado, mantenha a foto antiga
+                // Aqui você pode buscar o cutelo existente do banco de dados para obter a foto antiga
+                Cutelo cuteloExistente = cuteloService.findById(cutelo.getId());
+                cutelo.setFoto(cuteloExistente.getFoto());
+            }
+
+            // Atualiza o cutelo no banco de dados
+            cuteloService.salvar(cutelo);
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("error", "Erro ao atualizar o cutelo.");
+            return "adm/editarCutelo"; // Retorna para a página de edição em caso de erro
+        }
+        return "redirect:/administrador/cutelos/listar"; // Redireciona para a lista de cutelos
     }
 
     @GetMapping("/remover/{id}")

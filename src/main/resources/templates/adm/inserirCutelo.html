@@ -25,7 +25,8 @@
                     <option value="" disabled selected>Selecione uma categoria</option>
                     <option value="Cutelo de Cozinha">Cutelo de Cozinha</option>
                     <option value="Cutelo de Churrasco">Cutelo de Churrasco</option>
-                    <!-- Adicione outras categorias conforme necessário -->
+                    <option value="Cutelo de Caça e Aventura">Cutelo de Caça e Aventura</option>
+                    <option value="Cutelos Tradicionais Artesanais">Cutelos Tradicionais Artesanais</option>
                 </select>
                 <div class="invalid-feedback">Por favor, selecione uma categoria.</div>
             </div>
@@ -33,6 +34,42 @@
                 <label for="file">Foto do Cutelo</label>
                 <input type="file" class="form-control-file" id="file" name="file" required>
                 <div class="invalid-feedback">Por favor, faça o upload de uma foto do cutelo.</div>
+            </div>
+
+            <div class="form-group">
+                <label>Medidas do Cutelo</label>
+                <div class="row">
+                    <div class="col">
+                        <label for="materialLamina">Material da Lâmina</label>
+                        <input type="text" class="form-control form-control-sm" id="materialLamina" th:field="*{material_Lamina}" placeholder="Material" required>
+                        <div class="invalid-feedback">Por favor, insira o material da lâmina.</div>
+                    </div>
+                    <div class="col">
+                        <label for="materialCabo">Material do Cabo</label>
+                        <input type="text" class="form-control form-control-sm" id="materialCabo" th:field="*{materia_cabo}" placeholder="Material" required>
+                        <div class="invalid-feedback">Por favor, insira o material do cabo.</div>
+                    </div>
+                    <div class="col">
+                        <label for="compLamina">Comp. Lâmina (pol)</label>
+                        <input type="text" class="form-control form-control-sm" id="compLamina" th:field="*{comp_lamina}" placeholder="Polegadas" required>
+                        <div class="invalid-feedback">Por favor, insira o comprimento da lâmina.</div>
+                    </div>
+                    <div class="col">
+                        <label for="dorso">Dorso (mm)</label>
+                        <input type="text" class="form-control form-control-sm" id="dorso" th:field="*{dorso}" placeholder="mm" required>
+                        <div class="invalid-feedback">Por favor, insira o dorso.</div>
+                    </div>
+                    <div class="col">
+                        <label for="compTotal">Comp. Total (cm)</label>
+                        <input type="text" class="form-control form-control-sm" id="compTotal" th:field="*{comp_total}" placeholder="cm" required>
+                        <div class="invalid-feedback">Por favor, insira o comprimento total.</div>
+                    </div>
+                    <div class="col">
+                        <label for="largLamina">Larg. Lâmina (cm)</label>
+                        <input type="text" class="form-control form-control-sm" id="largLamina" th:field="*{larg_lamina}" placeholder="cm" required>
+                        <div class="invalid-feedback">Por favor, insira a largura da lâmina.</div>
+                    </div>
+                </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Salvar</button>
