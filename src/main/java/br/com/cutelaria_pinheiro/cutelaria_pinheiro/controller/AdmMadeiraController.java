@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.com.cutelaria_pinheiro.cutelaria_pinheiro.model.Madeira;
@@ -79,13 +80,8 @@ public class AdmMadeiraController {
     // pagina para confirmaçao de remoçao do produto
     @GetMapping("/remover/{id}")
     public String remover_madeira(@PathVariable UUID id, ModelMap model) {
-        try {
-            model.addAttribute("madeira", madeiraService.findById(id));
-        } catch (Exception e) {
-            System.err.println("erro: " + e.getMessage());
-            return "redirect:/administrador/madeiras/listar";
-        }
-        return "adm/removerMadeira";
+        model.addAttribute("madeira", madeiraService.findById(id));
+        return "adm/removerMadeira"; // Retorna para a página de remoção
     }
 
     // vai receber a requisiçao POST da pagina removerMadeira, para remover a
@@ -98,32 +94,36 @@ public class AdmMadeiraController {
             System.err.println("erro: " + e.getMessage());
             return "redirect:/administrador/madeiras/listar";
         }
-        return "redirect:/administrador/madeiras/listar";
+        return "redirect:/administrador/madeiras/listar"; // Redireciona após a exclusão
     }
 
     // editar um produto de madeira
     // pagina para editar o produto de Madeira
     @GetMapping("/editar/{id}")
     public String editar_madeira(@PathVariable UUID id, ModelMap model) {
-        try {
-            model.addAttribute("madeira", madeiraService.findById(id));
-        } catch (Exception e) {
-            System.err.println("erro: " + e.getMessage());
-            return "redirect:/administrador/madeiras/listar";
-        }
+        model.addAttribute("madeira", madeiraService.findById(id));
         return "adm/editarMadeira";
     }
 
     // requisiçao POST para salvar as alteraçoes
     @PostMapping("/atualizar")
-    public String atualizar_madeira(Madeira madeira) {
+    public String atualizar_madeira(@ModelAttribute Madeira madeira, @RequestParam("file") MultipartFile foto) {
         try {
+            // Verifica se um novo arquivo foi enviado
+            if (!foto.isEmpty()) {
+                madeira.setFoto(foto.getBytes());
+            } else {
+                // Se nenhum novo arquivo foi enviado, mantenha a foto antiga
+                Madeira madeiraExistente = madeiraService.findById(madeira.getId());
+                madeira.setFoto(madeiraExistente.getFoto());
+            }
+
             madeiraService.salvar(madeira);
         } catch (Exception e) {
             System.err.println("erro: " + e.getMessage());
-            return "redirect:/administrador/madeiras/listar";
+            return "redirect:/administrador/madeiras/listar"; // Redireciona em caso de erro
         }
-        return "redirect:/administrador/madeiras/listar";
+        return "redirect:/administrador/madeiras/listar"; // Redireciona após a atualização
     }
 
 }

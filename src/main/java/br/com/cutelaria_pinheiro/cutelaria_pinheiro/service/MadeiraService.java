@@ -1,7 +1,6 @@
 package br.com.cutelaria_pinheiro.cutelaria_pinheiro.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +19,8 @@ public class MadeiraService {
         return madeiraRepository.findAll();
     }
 
-    public Optional<Madeira> findById(UUID id){
-        return madeiraRepository.findById(id);
+    public Madeira findById(UUID id){
+        return madeiraRepository.findById(id).orElse(null);
     }
 
     public Madeira salvar(Madeira madeira){

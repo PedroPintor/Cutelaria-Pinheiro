@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Produto de Madeira</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Editar Produto de Madeira</h1>
+        <form th:action="@{/administrador/madeiras/atualizar}" th:object="${madeira}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nome">Nome do Produto</label>
+                <input type="text" class="form-control" id="nome" th:field="*{nome}" placeholder="Digite o nome do produto" required>
+                <div class="invalid-feedback">Por favor, insira o nome do produto.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="foto">Foto do Produto</label>
+                <input type="file" class="form-control-file" id="foto" name="file">
+                <img th:if="${madeira.fotoBase != null}" th:src="'data:image/jpeg;base64,' + ${madeira.fotoBase}" alt="Foto de ${madeira.nome}" class="img-thumbnail mt-2" />
+            </div>
+
+            <div class="form-group">
+                <label for="categoria">Categoria</label>
+                <select class="form-control" id="categoria" th:field="*{categoria}" required>
+                    <option value="" disabled>Selecione uma categoria</option>
+                    <option value="Petisqueira" th:selected="${madeira.categoria == 'Petisqueira'}">Petisqueira</option>
+                    <option value="Tabuas de Churrasco" th:selected="${madeira.categoria == 'Tabuas de Churrasco'}">Tabuas de Churrasco</option>
+                </select>
+                <div class="invalid-feedback">Por favor, selecione uma categoria.</div>
+            </div>
+
+            <div class="form-group">
+                <label>Medidas do Produto</label>
+                <div class="row">
+                    <div class="col">
+                        <label for="acabamento">Acabamento</label>
+                        <input type="text" class="form-control form-control-sm" id="acabamento" th:field="*{acabamento}" placeholder="Acabamento" required>
+                        <div class="invalid-feedback">Por favor, insira o acabamento.</div>
+                    </div>
+                    <div class="col">
+                        <label for="comprimento">Comprimento</label>
+                        <input type="text" class="form-control form-control-sm" id="comprimento" th:field="*{comprimento}" placeholder="Comprimento" required>
+                        <div class="invalid-feedback">Por favor, insira o comprimento.</div>
+                    </div>
+                    <div class="col">
+                        <label for="largura">Largura</label>
+                        <input type="text" class="form-control form-control-sm" id="largura" th:field="*{largura}" placeholder="Largura" required>
+                        <div class="invalid-feedback">Por favor, insira a largura.</div>
+                    </div>
+                    <div class="col">
+                        <label for="espessura">Espessura</label>
+                        <input type="text" class="form-control form-control-sm" id="espessura" th:field="*{espessura}" placeholder="Espessura" required>
+                        <div class="invalid-feedback">Por favor, insira a espessura.</div>
+                    </div>
+                    <div class="col">
+                        <label for="material">Material</label>
+                        <input type="text" class="form-control form-control-sm" id="material" th:field="*{material}" placeholder="Material" required>
+                        <div class="invalid-feedback">Por favor, insira o material.</div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="#" th:href="@{/administrador/madeiras/listar}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+
+</html>

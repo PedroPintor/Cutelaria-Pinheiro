@@ -56,10 +56,10 @@
                         <td th:text="${madeira.nome}"></td>
                         <td th:text="${madeira.categoria}"></td>
                         <td>
-                            <a th:if="@{ madeira.id != null}" th:href="@{/administrador/produtos/editar/{id}(id=${madeira.id})}" class="btn btn-warning btn-sm">Editar</a>
+                            <a th:if="@{ madeira.id != null}" th:href="@{/administrador/madeiras/editar/{id}(id=${madeira.id})}" class="btn btn-warning btn-sm">Editar</a>
                         </td>
                         <td>
-                            <a th:if="@{ madeira.id != null}" th:href="@{/administrador/produtos/remover/{id}(id=${madeira.id})}" class="btn btn-danger btn-sm">Remover</a>
+                            <a th:if="@{ madeira.id != null}" th:href="@{/administrador/madeiras/remover/{id}(id=${madeira.id})}" class="btn btn-danger btn-sm">Remover</a>
                         </td>
                     </tr>
                 </tbody>
